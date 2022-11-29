@@ -1,0 +1,46 @@
+mat-card {
+  border-radius: 10px;
+  max-width: 50%;
+}
+
+mat-toolbar {
+  border-radius: 10px;
+}
+
+mat-card-content {
+  padding-top: 10px;
+}
+
+
+.full-width {
+  width: 100%;
+}
+
+.min-width {
+  width: 100%;
+  min-width: 150px;
+}
+
+.button-save {
+  margin: 0 15px;
+  border-radius: 10px;
+  height: 50px;
+  width: 150px;
+}
+
+.button-save:hover {
+  transform:scale(1.05);
+  background-color: #7b45da;
+}
+
+.button-cancel {
+  margin: 0 15px;
+  border-radius: 10px;
+  height: 50px;
+  width: 150px;
+}
+
+.button-cancel:hover {
+  background-color: #FB1B0A;
+  transform:scale(1.05);
+}

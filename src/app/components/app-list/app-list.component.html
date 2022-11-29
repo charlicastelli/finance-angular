@@ -1,0 +1,89 @@
+<mat-card>
+  <mat-toolbar color="primary">
+    <span>Visão Geral</span>
+
+    <div class="example-flex-container">
+      <button
+        class="btn-icon"
+        mat-icon-button
+        aria-label="adicionar"
+        (click)="add()"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+
+      <button
+        class="btn-icon"
+        mat-icon-button
+        aria-label="Receitas"
+        (click)="appetizer()"
+      >
+        <mat-icon>trending_up</mat-icon>
+      </button>
+      <button
+        class="btn-icon"
+        mat-icon-button
+        aria-label="Despesas"
+        (click)="exits()"
+      >
+        <mat-icon>trending_down</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+
+  <div class="column-flex mat-elevation-z8">
+    <mat-table [dataSource]="finance$">
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef> Descrição </mat-header-cell>
+        <mat-cell *matCellDef="let fina"> {{ fina.description }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="category">
+        <mat-header-cell *matHeaderCellDef> Categoria </mat-header-cell>
+        <mat-cell *matCellDef="let fina">
+          {{ fina.category }}
+          <mat-icon
+            class="icon-category"
+            aria-hidden="false"
+            aria-label="Categoria do curso"
+            >{{ fina.category | category }}</mat-icon
+          >
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="credit">
+        <mat-header-cell *matHeaderCellDef> Valor </mat-header-cell>
+        <mat-cell *matCellDef="let fina"> {{ fina.credit }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef class="action-column-header">
+          Ação
+        </mat-header-cell>
+
+        <mat-cell *matCellDef="let fina" class="action-column">
+          <button
+            class="button-icon-edit"
+            mat-icon-button
+            color="primary"
+            aria-label="Editar dado"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button
+            class="button-icon-delete"
+            mat-icon-button
+            color="warn"
+            aria-label="Remover dado"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+  </div>
+</mat-card>

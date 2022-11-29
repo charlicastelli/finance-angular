@@ -1,0 +1,5 @@
+[
+    { "_id": "1", "credit": "R$12,00", "description": "Pagamento", "category": "Entrada"},
+    { "_id": "2", "credit": "R$100,00", "description": "Mercado", "category": "Saída"}
+    
+]

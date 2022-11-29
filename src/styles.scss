@@ -1,1 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
+
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+mat-card {
+  max-width: 80%;
+  margin: 2em auto;
+  text-align: center;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// BOTÕES TOOLBAR
+.example-flex-container {
+  display: flex;
+}
+
+.btn-icon {
+  background-color: #673ab7;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.btn-icon:hover {
+  background-color: #7b45da;
+  transform: scale(1.1);
+}

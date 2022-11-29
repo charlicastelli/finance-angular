@@ -1,0 +1,31 @@
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { SharedModule } from '../shared/shared.module';
+import { AppMaterialModule } from './../shared/app-material/app-material.module';
+import { AppAppetizerComponent } from './app-appetizer/app-appetizer.component';
+import { AppExitsComponent } from './app-exits/app-exits.component';
+import { AppFormComponent } from './app-form/app-form.component';
+import { AppListComponent } from './app-list/app-list.component';
+import { AppToolbarComponent } from './app-toolbar/app-toolbar.component';
+import { ComponentsRoutingModule } from './components-routing.module';
+
+
+@NgModule({
+  declarations: [
+    AppToolbarComponent,
+    AppListComponent,
+    AppAppetizerComponent,
+    AppExitsComponent,
+    AppFormComponent
+  ],
+  imports: [
+    CommonModule,
+    ComponentsRoutingModule,
+    AppMaterialModule,
+    ReactiveFormsModule,
+    SharedModule
+  ]
+})
+export class ComponentsModule { }
