@@ -10,6 +10,7 @@ import { AppFormComponent } from './app-form/app-form.component';
 import { AppListComponent } from './app-list/app-list.component';
 import { AppToolbarComponent } from './app-toolbar/app-toolbar.component';
 import { ComponentsRoutingModule } from './components-routing.module';
+import { MessagesComponent } from './messages/messages.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ComponentsRoutingModule } from './components-routing.module';
     AppListComponent,
     AppAppetizerComponent,
     AppExitsComponent,
-    AppFormComponent
+    AppFormComponent,
+    MessagesComponent
   ],
   imports: [
     CommonModule,

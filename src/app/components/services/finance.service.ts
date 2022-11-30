@@ -8,15 +8,36 @@ import { Model } from 'src/app/model/model';
   providedIn: 'root',
 })
 export class FinanceService {
-  private readonly API = '/assets/list-test.json';
+  private readonly API = 'api/finance';
 
   constructor(private httpClient: HttpClient) {}
 
   list() {
-    return this.httpClient.get<Model[]>(this.API)
-    .pipe(
+    return this.httpClient.get<Model[]>(this.API).pipe(
       first(),
-      tap(finance => console.log(finance))
+      // delay(1000),
+      tap((finance) => console.log(finance))
     );
+  }
+
+  loadById(id: string) {
+    return this.httpClient.get<Model>(`${this.API}/${id}`);
+  }
+
+  save(record: Partial<Model>) {
+    if (record._id) {
+      return this.update(record);
+    }
+    return this.create(record);
+  }
+
+  private create(record: Partial<Model>) {
+    return this.httpClient.post<Model>(this.API, record).pipe(first());
+  }
+
+  private update(record: Partial<Model>) {
+    return this.httpClient
+      .put<Model>(`${this.API}/${record._id}`, record)
+      .pipe(first());
   }
 }

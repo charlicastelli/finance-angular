@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 
 import { Model } from 'src/app/model/model';
+import { ErrorDialogComponent } from 'src/app/shared/dialog/error-dialog/error-dialog.component';
 
 import { FinanceService } from '../services/finance.service';
 
@@ -19,9 +21,21 @@ export class AppListComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private financeService: FinanceService
+    private financeService: FinanceService,
+    public dialog: MatDialog
   ) {
-    this.finance$ = this.financeService.list();
+    this.finance$ = this.financeService.list().pipe(
+      catchError((error) => {
+        this.onError('Erro ao carregar informações!');
+        return of([]);
+      })
+    );
+   }
+
+   onError(errorMsg: string) {
+    this.dialog.open(ErrorDialogComponent, {
+      data: errorMsg,
+    });
    }
 
   ngOnInit(): void {
