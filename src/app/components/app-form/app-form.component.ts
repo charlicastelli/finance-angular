@@ -1,7 +1,11 @@
-
 import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  NonNullableFormBuilder,
+  Validators,
+} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 //import { ActivatedRoute } from '@angular/router';
 import { Model } from 'src/app/model/model';
@@ -15,7 +19,7 @@ import { FinanceService } from './../services/finance.service';
   styleUrls: ['./app-form.component.scss'],
 })
 export class AppFormComponent implements OnInit {
-  @Input() formData: Model | null = null;
+  formData: Model | null = null;
 
   // form = this.formBuilder.group({
   //   _id: [''],
@@ -39,11 +43,15 @@ export class AppFormComponent implements OnInit {
   ngOnInit(): void {
     this.form = new FormGroup({
       _id: new FormControl(this.formData ? this.formData._id : ''),
-      credit: new FormControl(this.formData ? this.formData.credit : '', [Validators.required]),
-      description: new FormControl(this.formData ? this.formData.description : ''),
-      category: new FormControl(this.formData ? this.formData.category : '')
+      credit: new FormControl(this.formData ? this.formData.credit : '', [
+        Validators.required,
+      ]),
+      description: new FormControl(
+        this.formData ? this.formData.description : ''
+      ),
+      category: new FormControl(this.formData ? this.formData.category : ''),
     });
-    // const add: Model = this.route.snapshot.data['add']; 
+    // const add: Model = this.route.snapshot.data['add'];
     // this.form.setValue({
     //   _id: add._id,
     //   credit: add.credit,
@@ -70,7 +78,7 @@ export class AppFormComponent implements OnInit {
   }
 
   private onError() {
-    this.messagesService.add('Erro ao salvar Item!');
-    //this.snackbar.open('Erro ao salvar item.', '', { duration: 5000 });
+    //this.messagesService.add('Erro ao salvar Item!');
+    this.snackbar.open('Erro ao salvar item.', '', { duration: 5000 });
   }
 }

@@ -1,0 +1,51 @@
+<app-info-finance
+  *ngIf="finance$ | async as finance; else loading"
+  [finance]="finance"
+></app-info-finance>
+
+<mat-card>
+  <mat-toolbar color="primary">
+    <span>Visão Geral</span>
+    <div class="example-flex-container">
+      <button
+        class="btn-icon"
+        mat-icon-button
+        aria-label="adicionar"
+        (click)="onAdd()"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+
+      <button
+        class="btn-icon"
+        mat-icon-button
+        aria-label="Receitas"
+        (click)="appetizer()"
+      >
+        <mat-icon>trending_up</mat-icon>
+      </button>
+      <button
+        class="btn-icon"
+        mat-icon-button
+        aria-label="Despesas"
+        (click)="exits()"
+      >
+        <mat-icon>trending_down</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+
+  <div class="column-flex mat-elevation-z8">
+    <app-app-list
+      *ngIf="finance$ | async as finance; else loading"
+      [finance]="finance"
+    ></app-app-list>
+
+    <!--Caso o observable retornar falso, exibe o spinner-->
+    <ng-template #loading>
+      <div class="loading-spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+    </ng-template>
+  </div>
+</mat-card>

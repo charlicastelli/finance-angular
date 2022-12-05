@@ -7,10 +7,12 @@ import { CategoryPipe } from './pipes/category.pipe';
 
 
 
+
 @NgModule({
   declarations: [
     CategoryPipe,
     ErrorDialogComponent
+
   ],
   imports: [
     CommonModule,

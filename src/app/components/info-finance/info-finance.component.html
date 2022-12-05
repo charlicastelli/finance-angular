@@ -1,0 +1,22 @@
+<div class="container">
+    <div>
+        <mat-card>
+            Entradas <br><br>
+            {{ getTotalAppetizer() | currency: "BRL"}}
+        </mat-card>
+    </div>
+        
+    <div>
+        <mat-card>
+            Saídas <br><br>
+            {{ getTotalExits() | currency: "BRL" }}
+        </mat-card>
+    </div>
+
+    <div>
+        <mat-card>
+            Total <br><br>
+            {{ getTotal() | currency: "BRL" }}
+        </mat-card>
+    </div>
+</div>

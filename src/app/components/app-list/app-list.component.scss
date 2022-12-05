@@ -1,11 +1,4 @@
-mat-card {
-  border-radius: 10px;
-}
 
-mat-toolbar {
-  border-radius: 10px;
-
-}
 
 mat-table {
   overflow: auto;
@@ -25,10 +18,7 @@ mat-header-cell {
   flex: 0 0 75px;
 }
 
-.btn-icon {
-  margin: 0 15px;
-  animation: go-back 1s infinite alternate;
-}
+
 
 .button-icon-edit {
   animation: go-back 1s infinite alternate;
@@ -57,11 +47,7 @@ mat-header-cell {
 
 
 
-.column-flex {
-  display: flex;
-  flex-direction: column;
-  min-width: 300px;
-}
+
 
 
 
@@ -76,10 +62,4 @@ mat-header-cell {
 // }
 
 
-.loading-spinner {
-  padding: 25px;
-  background-color: #eaeaea;
-  display: flex;
-  text-align: center;
-  justify-content: center;
-}
+

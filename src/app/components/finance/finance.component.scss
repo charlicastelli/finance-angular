@@ -1,0 +1,26 @@
+mat-card {
+  border-radius: 10px;
+}
+
+mat-toolbar {
+  border-radius: 10px;
+}
+
+.btn-icon {
+  margin: 0 15px;
+  animation: go-back 1s infinite alternate;
+}
+
+.column-flex {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.loading-spinner {
+  padding: 25px;
+  background-color: #eaeaea;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}

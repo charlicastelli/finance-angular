@@ -11,6 +11,8 @@ import { AppListComponent } from './app-list/app-list.component';
 import { AppToolbarComponent } from './app-toolbar/app-toolbar.component';
 import { ComponentsRoutingModule } from './components-routing.module';
 import { MessagesComponent } from './messages/messages.component';
+import { FinanceComponent } from './finance/finance.component';
+import { InfoFinanceComponent } from './info-finance/info-finance.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { MessagesComponent } from './messages/messages.component';
     AppAppetizerComponent,
     AppExitsComponent,
     AppFormComponent,
-    MessagesComponent
+    MessagesComponent,
+    FinanceComponent,
+    InfoFinanceComponent
   ],
   imports: [
     CommonModule,
