@@ -30,12 +30,4 @@ export class AppAppetizerComponent implements OnInit {
     this.location.back();
   }
 
-  /** Gets the total cost of all transactions. */
-  // getTotalCost(): Observable<Model[]> {
-  //   return this.finance$.pipe(
-  //     map(t => t.credit).reduce((acc, value) => acc + value, 0)
-  //   )
-  // }
-  
-
 }

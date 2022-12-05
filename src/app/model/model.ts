@@ -1,6 +1,6 @@
 export interface Model {
     _id: string;
-    credit: number;
+    credit: string;
     description: string;
     category: string;
 }

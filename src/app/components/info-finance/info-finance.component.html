@@ -1,13 +1,13 @@
 <div class="container">
     <div>
-        <mat-card>
+        <mat-card (click)="appetizer()">
             Entradas <br><br>
             {{ getTotalAppetizer() | currency: "BRL"}}
         </mat-card>
     </div>
         
     <div>
-        <mat-card>
+        <mat-card (click)="exits()">
             Saídas <br><br>
             {{ getTotalExits() | currency: "BRL" }}
         </mat-card>

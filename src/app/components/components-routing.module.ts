@@ -1,3 +1,4 @@
+import { FinanceResolver } from './guards/finance.resolver';
 import { AppFormComponent } from './app-form/app-form.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -10,7 +11,8 @@ const routes: Routes = [
   { path: '', component: AppToolbarComponent },
   { path: 'appetizer', component: AppAppetizerComponent},
   { path: 'exits', component: AppExitsComponent},
-  { path: 'add', component: AppFormComponent}
+  { path: 'add', component: AppFormComponent, resolve: {finance: FinanceResolver}},
+  { path: 'edit/:id', component: AppFormComponent, resolve: {finance: FinanceResolver} }
 ];
 
 @NgModule({

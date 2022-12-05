@@ -22,7 +22,7 @@
         aria-label="Receitas"
         (click)="appetizer()"
       >
-        <mat-icon>trending_up</mat-icon>
+        <mat-icon>arrow_upwards</mat-icon>
       </button>
       <button
         class="btn-icon"
@@ -30,7 +30,7 @@
         aria-label="Despesas"
         (click)="exits()"
       >
-        <mat-icon>trending_down</mat-icon>
+        <mat-icon>arrow_downward</mat-icon>
       </button>
     </div>
   </mat-toolbar>
@@ -39,6 +39,8 @@
     <app-app-list
       *ngIf="finance$ | async as finance; else loading"
       [finance]="finance"
+      (edit)="onEdit($event)"
+      (remove)="onRemove($event)"
     ></app-app-list>
 
     <!--Caso o observable retornar falso, exibe o spinner-->
