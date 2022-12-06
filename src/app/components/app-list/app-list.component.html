@@ -4,13 +4,11 @@
     <mat-cell *matCellDef="let fina">
       {{ fina.credit | currency : "BRL" }}
     </mat-cell>
-    <!-- <mat-footer-cell *matFooterCellDef> {{getTotalCost() | currency: "BRL"}} </mat-footer-cell> -->
   </ng-container>
 
   <ng-container matColumnDef="description">
     <mat-header-cell *matHeaderCellDef> Descrição </mat-header-cell>
     <mat-cell *matCellDef="let fina"> {{ fina.description }} </mat-cell>
-    <!-- <mat-footer-cell *matFooterCellDef></mat-footer-cell> -->
   </ng-container>
 
   <ng-container matColumnDef="category">
@@ -24,7 +22,6 @@
         >{{ fina.category | category }}</mat-icon
       >
     </mat-cell>
-    <!-- <mat-footer-cell *matFooterCellDef></mat-footer-cell> -->
   </ng-container>
 
   <ng-container matColumnDef="actions">
@@ -36,7 +33,7 @@
       <button
         class="button-icon-edit"
         mat-icon-button
-        color="primary"
+        color="accent"
         aria-label="Editar dado"
       >
         <mat-icon (click)="onEdit(fina)">edit</mat-icon>
@@ -51,10 +48,8 @@
         <mat-icon (click)="onDelete(fina)">delete</mat-icon>
       </button>
     </mat-cell>
-    <!-- <mat-footer-cell *matFooterCellDef></mat-footer-cell> -->
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-  <!-- <mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></mat-footer-row> -->
 </mat-table>

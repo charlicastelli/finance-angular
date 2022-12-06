@@ -1,5 +1,3 @@
-
-
 mat-table {
   overflow: auto;
   max-height: 600px;
@@ -18,14 +16,12 @@ mat-header-cell {
   flex: 0 0 75px;
 }
 
-
-
 .button-icon-edit {
   animation: go-back 1s infinite alternate;
 }
 
 .button-icon-edit:hover {
-  color:#7b45da;
+  color: #fbff00;
 }
 
 .button-icon-delete {
@@ -45,21 +41,6 @@ mat-header-cell {
   }
 }
 
-
-
-
-
-
-
 .icon-category {
   padding-left: 10px;
-  //color: greenyellow;
 }
-
-// .icon-category-exits {
-//   padding-left: 10px;
-//   color: red;
-// }
-
-
-

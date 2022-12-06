@@ -5,3 +5,26 @@ mat-card {
 mat-toolbar {
   border-radius: 10px;
 }
+
+mat-header-cell {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.icon-category {
+  padding-left: 10px;
+}
+
+.column-flex {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.loading-spinner {
+  padding: 25px;
+  background-color: #eaeaea;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}

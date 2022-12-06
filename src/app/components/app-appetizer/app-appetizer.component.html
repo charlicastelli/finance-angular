@@ -1,8 +1,8 @@
 <mat-card>
   <mat-toolbar color="primary">
     <span>Receitas</span>
-    
-    <div class="example-flex-container">
+
+    <div>
       <button
         class="btn-icon"
         mat-icon-button
@@ -14,19 +14,21 @@
     </div>
   </mat-toolbar>
 
-  <div class="column-flex mat-elevation-z8">
-    <mat-table [dataSource]="finance$">
-
+  <div
+    class="column-flex mat-elevation-z8"
+    *ngIf="finance$ | async as finance; else loading"
+  >
+    <mat-table [dataSource]="finance">
       <ng-container matColumnDef="credit">
         <mat-header-cell *matHeaderCellDef> Valor </mat-header-cell>
-        <mat-cell *matCellDef="let fina"> {{ fina.credit | currency: 'BRL'}} </mat-cell>
-        <!-- <mat-footer-cell *matFooterCellDef> {{getTotalCost() | currency}} </mat-footer-cell> -->
+        <mat-cell *matCellDef="let fina">
+          {{ fina.credit | currency : "BRL" }}
+        </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="description">
         <mat-header-cell *matHeaderCellDef> Descrição </mat-header-cell>
         <mat-cell *matCellDef="let fina"> {{ fina.description }} </mat-cell>
-        <!-- <mat-footer-cell *matFooterCellDef></mat-footer-cell> -->
       </ng-container>
 
       <ng-container matColumnDef="category">
@@ -40,16 +42,11 @@
             >{{ fina.category | category }}</mat-icon
           >
         </mat-cell>
-        <!-- <mat-footer-cell *matFooterCellDef></mat-footer-cell> -->
       </ng-container>
-
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-      <!-- <mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></mat-footer-row> -->
     </mat-table>
-
-    
   </div>
   <!--Caso o observable retornar falso, exibe o spinner-->
   <ng-template #loading>
@@ -57,5 +54,4 @@
       <mat-spinner></mat-spinner>
     </div>
   </ng-template>
-
 </mat-card>

@@ -1,22 +1,31 @@
-<div class="container">
-    <div>
-        <mat-card (click)="appetizer()">
-            Entradas <br><br>
-            {{ getTotalAppetizer() | currency: "BRL"}}
-        </mat-card>
+<nav class="general">
+  <div class="container" (click)="appetizer()">
+    <div class="icon-header">
+      <header>ENTRADAS</header>
+      <mat-icon>arrow_upwards</mat-icon>
     </div>
-        
-    <div>
-        <mat-card (click)="exits()">
-            Saídas <br><br>
-            {{ getTotalExits() | currency: "BRL" }}
-        </mat-card>
+    <div class="display">
+      {{ getTotalAppetizer() | currency : "BRL" }}
     </div>
+  </div>
 
-    <div>
-        <mat-card>
-            Total <br><br>
-            {{ getTotal() | currency: "BRL" }}
-        </mat-card>
+  <div class="container" (click)="exits()">
+    <div class="icon-header">
+      <header>SAÍDAS</header>
+      <mat-icon>arrow_downwards</mat-icon>
     </div>
-</div>
+    <div class="display">
+      {{ getTotalExits() | currency : "BRL" }}
+    </div>
+  </div>
+
+  <div class="containerTotal">
+    <div class="icon-header">
+      <header>TOTAL</header>
+      <mat-icon>attach_money</mat-icon>
+    </div>
+    <div class="display">
+      {{ getTotal() | currency : "BRL" }}
+    </div>
+  </div>
+</nav>
