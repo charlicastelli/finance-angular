@@ -36,14 +36,14 @@ export class AppFormComponent implements OnInit {
       ),
       category: new FormControl(this.formData ? this.formData.category : ''),
     });
-    
-    //popular formulário para edição 
+
+    //popular formulário para edição
     const add: Model = this.route.snapshot.data['finance'];
     this.form.setValue({
       _id: add._id,
       credit: add.credit,
       description: add.description,
-      category: add.category
+      category: add.category,
     });
   }
 
@@ -59,6 +59,7 @@ export class AppFormComponent implements OnInit {
   }
 
   async onSuccess() {
+    this.messagesService.header('Sucesso');
     this.messagesService.add('Item salvo com sucesso!');
     this.onCancel();
   }

@@ -10,10 +10,8 @@ import { AppFormComponent } from './app-form/app-form.component';
 import { AppListComponent } from './app-list/app-list.component';
 import { AppToolbarComponent } from './app-toolbar/app-toolbar.component';
 import { ComponentsRoutingModule } from './components-routing.module';
-import { MessagesComponent } from './messages/messages.component';
 import { FinanceComponent } from './finance/finance.component';
 import { InfoFinanceComponent } from './info-finance/info-finance.component';
-
 
 @NgModule({
   declarations: [
@@ -22,16 +20,16 @@ import { InfoFinanceComponent } from './info-finance/info-finance.component';
     AppAppetizerComponent,
     AppExitsComponent,
     AppFormComponent,
-    MessagesComponent,
+
     FinanceComponent,
-    InfoFinanceComponent
+    InfoFinanceComponent,
   ],
   imports: [
     CommonModule,
     ComponentsRoutingModule,
     AppMaterialModule,
     ReactiveFormsModule,
-    SharedModule
-  ]
+    SharedModule,
+  ],
 })
-export class ComponentsModule { }
+export class ComponentsModule {}

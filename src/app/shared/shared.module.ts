@@ -5,14 +5,16 @@ import { AppMaterialModule } from './app-material/app-material.module';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { ErrorDialogComponent } from './dialog/error-dialog/error-dialog.component';
 import { CategoryPipe } from './pipes/category.pipe';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
     CategoryPipe,
     ErrorDialogComponent,
     ConfirmationDialogComponent,
+    MessagesComponent
   ],
   imports: [CommonModule, AppMaterialModule],
-  exports: [CategoryPipe, ErrorDialogComponent, ConfirmationDialogComponent],
+  exports: [CategoryPipe, ErrorDialogComponent, ConfirmationDialogComponent, MessagesComponent],
 })
 export class SharedModule {}

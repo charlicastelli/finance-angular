@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, Observable, of } from 'rxjs';
 import { Model } from 'src/app/model/model';
@@ -8,6 +7,7 @@ import { ConfirmationDialogComponent } from 'src/app/shared/confirmation-dialog/
 import { ErrorDialogComponent } from 'src/app/shared/dialog/error-dialog/error-dialog.component';
 
 import { FinanceService } from '../services/finance.service';
+import { MessagesService } from '../services/messages/messages.service';
 
 @Component({
   selector: 'app-finance',
@@ -22,7 +22,7 @@ export class FinanceComponent implements OnInit {
     public dialog: MatDialog,
     private router: Router,
     private route: ActivatedRoute,
-    private snackBar: MatSnackBar
+    private messagesService: MessagesService
   ) {
     this.finance$ = this.financeService.list().pipe(
       catchError((error) => {
@@ -76,11 +76,8 @@ export class FinanceComponent implements OnInit {
         this.financeService.remove(finance._id).subscribe(
           () => {
             this.refresh();
-            this.snackBar.open('Curso removido com sucesso!', 'X', {
-              duration: 5000,
-              verticalPosition: 'top',
-              horizontalPosition: 'center',
-            });
+            this.messagesService.header('Sucesso');
+            this.messagesService.add('Item Removido com sucesso!');
           },
           () => this.onError('Erro ao tentar remover curso.')
         );
