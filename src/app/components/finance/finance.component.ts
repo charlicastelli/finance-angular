@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { catchError, Observable, of } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 import { Model } from 'src/app/model/model';
 import { ConfirmationDialogComponent } from 'src/app/shared/confirmation-dialog/confirmation-dialog.component';
 import { ErrorDialogComponent } from 'src/app/shared/dialog/error-dialog/error-dialog.component';
@@ -84,4 +84,21 @@ export class FinanceComponent implements OnInit {
       }
     });
   }
+
+  //Realizar pesquisa por categoria
+  search(e: Event): void {
+    const target = e.target as HTMLInputElement;
+    const value = target.value;
+
+    // //Utilizei o pipe e o filter pois queria exibir apenas a categoria
+    this.finance$ = this.financeService
+      .list()
+      .pipe(
+        map((item) =>
+          item.filter((item) => item.category.toLowerCase().includes(value))
+        )
+      );
+  }
+
+  
 }

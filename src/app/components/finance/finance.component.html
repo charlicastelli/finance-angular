@@ -1,11 +1,23 @@
 <app-info-finance
-  *ngIf="finance$ | async as finance; else loading"
+  *ngIf="finance$ | async as finance"
   [finance]="finance"
 ></app-info-finance>
+
+<div class="search-container">
+  <form>
+    <mat-icon aria-label="pesquisar">search</mat-icon>
+    <input
+      type="text"
+      placeholder="Pesquise uma Categoria"
+      (input)="search($event)"
+    />
+  </form>
+</div>
 
 <mat-card>
   <mat-toolbar color="primary">
     <span>Visão Geral</span>
+    
     <div class="example-flex-container">
       <button
         class="btn-icon"

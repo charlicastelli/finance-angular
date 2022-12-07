@@ -24,3 +24,35 @@ mat-toolbar {
   text-align: center;
   justify-content: center;
 }
+
+//SEARCH
+.search-container {
+  margin-bottom: 2em;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-container form {
+  width: 50%;
+  position: relative;
+}
+
+.search-container mat-icon {
+  position: absolute;
+  top: 7px;
+  left: 8px;
+}
+
+.search-container input {
+  padding: 0.5em;
+  width: 100%;
+  text-align: center;
+}
+
+
+mat-tab-group {
+  width: 20%;
+}
