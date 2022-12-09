@@ -8,10 +8,49 @@ import { Model } from 'src/app/model/model';
 import { MessagesService } from '../services/messages/messages.service';
 import { FinanceService } from './../services/finance.service';
 
+import {
+  MomentDateAdapter,
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+} from '@angular/material-moment-adapter';
+import {
+  DateAdapter,
+  MAT_DATE_FORMATS,
+  MAT_DATE_LOCALE,
+} from '@angular/material/core';
+import { MatDatepicker } from '@angular/material/datepicker';
+
+import * as _moment from 'moment';
+
+import { default as _rollupMoment, Moment } from 'moment';
+
+const moment = _rollupMoment || _moment;
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'MM/YYYY',
+  },
+  display: {
+    dateInput: 'MMMM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
+
 @Component({
   selector: 'app-app-form',
   templateUrl: './app-form.component.html',
   styleUrls: ['./app-form.component.scss'],
+  providers: [
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+    },
+
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+  ],
 })
 export class AppFormComponent implements OnInit {
   formData: Model | null = null;
@@ -35,6 +74,7 @@ export class AppFormComponent implements OnInit {
         this.formData ? this.formData.description : ''
       ),
       category: new FormControl(this.formData ? this.formData.category : ''),
+      date: new FormControl(moment().toNow),
     });
 
     //popular formulário para edição
@@ -44,6 +84,7 @@ export class AppFormComponent implements OnInit {
       credit: add.credit,
       description: add.description,
       category: add.category,
+      date: add.date,
     });
   }
 

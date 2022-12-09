@@ -52,7 +52,49 @@ mat-toolbar {
   text-align: center;
 }
 
+//CALENDARIO
+.div-date {
+  width: 50%;
+  height: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 
-mat-tab-group {
-  width: 20%;
+.example-month-picker {
+  pointer-events: none;
+  display: none;
+}
+
+
+.mat-calendar-arrow {
+  display: none;
+}
+
+.mat-calendar-period-button {
+  pointer-events: none;
+}
+
+mat-form-field {
+  width: 30%;
+  top: 0em !important;
+}
+
+mat-datepicker-toggle {
+  position: relative;
+  top: 8px;
+  color: #FFFFFF;
+}
+
+mat-datepicker-toggle:hover {
+  color: #bdbbc0;
+}
+
+
+
+//OCULTAR A LINHA SUBLINADA DO FORM-FIELD
+::ng-deep .mat-form-field-underline {
+  display: none;
+  
 }

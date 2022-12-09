@@ -17,7 +17,21 @@
 <mat-card>
   <mat-toolbar color="primary">
     <span>Visão Geral</span>
-    
+
+    <div class="div-date">
+      <mat-form-field>
+        <input matInput [matDatepicker]="dp" [formControl]="date" readonly="true" />
+        <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+        <mat-datepicker
+          #dp
+          startView="year"
+          (monthSelected)="setMonthAndYear($event, dp)"
+          panelClass="example-month-picker"
+        >
+        </mat-datepicker>
+      </mat-form-field>
+    </div>
+
     <div class="example-flex-container">
       <button
         class="btn-icon"

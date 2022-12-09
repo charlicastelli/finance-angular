@@ -1,3 +1,4 @@
+@import '../node_modules/@syncfusion/ej2-material-theme/styles/material.css';
 
 mat-toolbar {
   display: flex;
@@ -33,4 +34,9 @@ body {
 .btn-icon:hover {
   background-color: #7b45da;
   transform: scale(1.1);
+}
+
+input {
+  //Primeira letra maiuscula
+  text-transform: capitalize;
 }

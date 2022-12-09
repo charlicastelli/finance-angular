@@ -8,14 +8,57 @@ import { ErrorDialogComponent } from 'src/app/shared/dialog/error-dialog/error-d
 
 import { FinanceService } from '../services/finance.service';
 import { MessagesService } from '../services/messages/messages.service';
+import { FormControl } from '@angular/forms';
+import {
+  MomentDateAdapter,
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+} from '@angular/material-moment-adapter';
+import {
+  DateAdapter,
+  MAT_DATE_FORMATS,
+  MAT_DATE_LOCALE,
+} from '@angular/material/core';
+import { MatDatepicker } from '@angular/material/datepicker';
+
+import * as _moment from 'moment';
+
+import { default as _rollupMoment, Moment } from 'moment';
+
+const moment = _rollupMoment || _moment;
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'MM/YYYY',
+  },
+  display: {
+    dateInput: 'MMMM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 @Component({
   selector: 'app-finance',
   templateUrl: './finance.component.html',
   styleUrls: ['./finance.component.scss'],
+  providers: [
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+    },
+
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+  ],
 })
 export class FinanceComponent implements OnInit {
   finance$: Observable<Model[]>;
+
+  //Paga a data atual
+  date = new FormControl(moment());
+
 
   constructor(
     private financeService: FinanceService,
@@ -24,12 +67,37 @@ export class FinanceComponent implements OnInit {
     private route: ActivatedRoute,
     private messagesService: MessagesService
   ) {
+
+    // this.finance$ = this.financeService.list().pipe(
+    //   map((item) => item.filter((item) => item.category === 'Entrada')),
+    //   catchError((error) => {
+    //     this.onError('Erro ao carregar informações!');
+    //     return of([]);
+    //   })
+    // );
+
     this.finance$ = this.financeService.list().pipe(
       catchError((error) => {
         this.onError('Erro ao carregar informações!');
         return of([]);
       })
     );
+  }
+
+  ngOnInit(): void {}
+
+  setMonthAndYear(
+    normalizedMonthAndYear: Moment,
+    datepicker: MatDatepicker<Moment>
+  ) {
+    const ctrlValue = this.date.value!;
+    ctrlValue.month(normalizedMonthAndYear.month());
+    ctrlValue.year(normalizedMonthAndYear.year());
+    this.date.setValue(ctrlValue);
+    datepicker.close();
+    // //if(moment().isAfter(ctrlValue))
+    // if(moment().isBefore(ctrlValue))
+    // alert("Yep!");
   }
 
   //Refresh na tela para atualizar sem o item excluido
@@ -47,8 +115,6 @@ export class FinanceComponent implements OnInit {
       data: errorMsg,
     });
   }
-
-  ngOnInit(): void {}
 
   onAdd() {
     this.router.navigate(['add'], { relativeTo: this.route });
@@ -99,6 +165,4 @@ export class FinanceComponent implements OnInit {
         )
       );
   }
-
-  
 }
