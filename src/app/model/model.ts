@@ -3,5 +3,5 @@ export interface Model {
   credit: string;
   description: string;
   category: string;
-  date: number;
+  date: string;
 }
