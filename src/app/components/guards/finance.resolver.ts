@@ -18,6 +18,6 @@ export class FinanceResolver implements Resolve<Model> {
     if (route.params && route.params['id']) {
       return this.financeService.loadById(route.params['id']);
     }
-    return of({_id: '', credit: '', description: '', category: '', date: '2022-12-12'});
+    return of({_id: '', credit: '', description: '', category: '', _date: ''});
   }
 }

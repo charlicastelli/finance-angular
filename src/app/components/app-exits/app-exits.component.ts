@@ -4,6 +4,11 @@ import { map, Observable } from 'rxjs';
 import { Model } from 'src/app/model/model';
 
 import { FinanceService } from '../services/finance.service';
+import * as _moment from 'moment';
+
+import { default as _rollupMoment } from 'moment';
+
+const moment = _rollupMoment || _moment;
 
 @Component({
   selector: 'app-app-exits',
@@ -22,7 +27,7 @@ export class AppExitsComponent implements OnInit {
     //Utilizei o pipe e o filter pois queria exibir apenas a categoria entrada
     this.finance$ = this.financeService
       .list()
-      .pipe(map((item) => item.filter((item) => item.category === 'Saída')));
+      .pipe(map((item) => item.filter((item) => item.category === 'Saída' && item._date === moment().format('YYYY-MM'))));
   }
 
   ngOnInit(): void {}

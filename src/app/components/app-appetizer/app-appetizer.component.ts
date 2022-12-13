@@ -4,6 +4,12 @@ import { map, Observable } from 'rxjs';
 
 import { FinanceService } from '../services/finance.service';
 import { Model } from './../../model/model';
+import * as _moment from 'moment';
+
+import { default as _rollupMoment } from 'moment';
+
+const moment = _rollupMoment || _moment;
+
 
 @Component({
   selector: 'app-app-appetizer',
@@ -22,7 +28,7 @@ export class AppAppetizerComponent implements OnInit {
     //Utilizei o pipe e o filter pois queria exibir apenas a categoria entrada
     this.finance$ = this.financeService
       .list()
-      .pipe(map((item) => item.filter((item) => item.category === 'Entrada')));
+      .pipe(map((item) => item.filter((item) => item.category === 'Entrada' && item._date === moment().format('YYYY-MM'))));
   }
 
   ngOnInit(): void {}

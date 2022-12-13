@@ -26,6 +26,7 @@ import { default as _rollupMoment, Moment } from 'moment';
 
 const moment = _rollupMoment || _moment;
 
+//formata a data de exibição
 export const MY_FORMATS = {
   parse: {
     dateInput: 'MM/YYYY',
@@ -68,15 +69,9 @@ export class FinanceComponent implements OnInit {
     private messagesService: MessagesService
   ) {
 
-    // this.finance$ = this.financeService.list().pipe(
-    //   map((item) => item.filter((item) => item.category === 'Entrada')),
-    //   catchError((error) => {
-    //     this.onError('Erro ao carregar informações!');
-    //     return of([]);
-    //   })
-    // );
-
+    //Exibe lista com data igual a atual no formato 2022-12
     this.finance$ = this.financeService.list().pipe(
+     map((item) => item.filter((item) => item._date === moment().format('YYYY-MM'))),
       catchError((error) => {
         this.onError('Erro ao carregar informações!');
         return of([]);
@@ -86,6 +81,7 @@ export class FinanceComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  //setar a data escolhida exibe na tela
   setMonthAndYear(
     normalizedMonthAndYear: Moment,
     datepicker: MatDatepicker<Moment>
@@ -95,6 +91,15 @@ export class FinanceComponent implements OnInit {
     ctrlValue.year(normalizedMonthAndYear.year());
     this.date.setValue(ctrlValue);
     datepicker.close();
+
+    //Exibe lista com data conforme data escolhida no formato 2022-12
+    this.finance$ = this.financeService.list().pipe(
+      map((item) => item.filter((item) => item._date === ctrlValue.format('YYYY-MM'))),
+      catchError((error) => {
+        this.onError('Erro ao carregar informações!');
+        return of([]);
+      })
+    );
     // //if(moment().isAfter(ctrlValue))
     // if(moment().isBefore(ctrlValue))
     // alert("Yep!");
@@ -156,7 +161,7 @@ export class FinanceComponent implements OnInit {
     const target = e.target as HTMLInputElement;
     const value = target.value;
 
-    // //Utilizei o pipe e o filter pois queria exibir apenas a categoria
+    //Utilizei o pipe e o filter pois queria exibir apenas a categoria
     this.finance$ = this.financeService
       .list()
       .pipe(
