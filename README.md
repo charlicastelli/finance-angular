@@ -1,27 +1,16 @@
 # ControleFinanceiro
-
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.4.
 
-## Development server
+- Projeto consumindo API Spring.
+- Para rodar o projeto usar o comando `npm run start`
+- Para instalar o `MOMENT-ADAPTER` usar o comando `npm i @angular/material-moment-adapter --legacy-peer-deps`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# Para usar o `_rollupMoment`
+- Dentro do arquivo `tsconfig.json`
+- No `compilerOptions{ }` adicionar o comando `"allowSyntheticDefaultImports": true`
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Images
+![1](https://user-images.githubusercontent.com/80997263/207433721-7a74d594-537c-4849-88aa-5318fd341718.png)
+![2](https://user-images.githubusercontent.com/80997263/207433730-a0abf504-1399-43a2-979d-b3144824a770.png)
+![3](https://user-images.githubusercontent.com/80997263/207433737-afa143de-be35-4e1e-9234-8b2bba753fff.png)
+![4](https://user-images.githubusercontent.com/80997263/207433744-eaee558c-aca2-40f2-acbc-6bba3d132b44.png)
