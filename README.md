@@ -4,6 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Projeto consumindo API Spring - https://github.com/charlicastelli/fina-spring-api/tree/main
 - Para rodar o projeto usar o comando `npm run start`
 - Para instalar o `MOMENT-ADAPTER` usar o comando `npm i @angular/material-moment-adapter --legacy-peer-deps`
+- Material Angular https://material.angular.io/guide/getting-started.
+- Animated.css https://animate.style/#documentation
 
 # Para usar o `_rollupMoment`
 - Dentro do arquivo `tsconfig.json`
