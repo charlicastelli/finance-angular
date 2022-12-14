@@ -1,4 +1,30 @@
-<mat-toolbar color="primary">
-  <span>Controle Financeiro</span>
-</mat-toolbar>
-<router-outlet></router-outlet>
+<div [ngClass]="{ 'dark-theme': isDarkTheme | async }">
+  <div>
+    <mat-toolbar>
+      <span>Controle Financeiro</span>
+      <div>
+        <button
+        id="teste"
+          mat-icon-button
+          aria-label="theme-ligth"
+          *ngIf="check"
+          (click)="toggleDarkThemeDark((check = false))"
+        >
+          <mat-icon class="btn-theme-light">brightness_high</mat-icon>
+        </button>
+
+        <button
+        id="teste"
+          class="btn-theme-dark"
+          mat-icon-button
+          aria-label="theme-dark"
+          *ngIf="!check"
+          (click)="toggleDarkTheme((check = true))"
+        >
+          <mat-icon class="btn-theme-dark">brightness_3</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </div>
+</div>

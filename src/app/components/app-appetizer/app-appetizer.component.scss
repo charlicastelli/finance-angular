@@ -1,16 +1,25 @@
 mat-card {
   border-radius: 10px;
+  background-color: var(--bg-card);
 }
 
 mat-toolbar {
   border-radius: 10px;
+  background-color: var(--primary);
+  color: var(--color-text);
 }
 
 mat-header-cell {
   font-size: 18px;
   font-weight: bold;
+  background-color: var(--bg-header-cell);
+  color: var(--color-text-black);
+  //border-radius: 10px;
 }
-
+mat-cell {
+  background-color: var(--bg-cell);
+  color: var(--color-text-black);
+}
 .icon-category {
   padding-left: 10px;
 }
@@ -23,8 +32,9 @@ mat-header-cell {
 
 .loading-spinner {
   padding: 25px;
-  background-color: #eaeaea;
+  background-color: var(--background);
   display: flex;
   text-align: center;
   justify-content: center;
 }
+

@@ -1,5 +1,5 @@
 <mat-card class="animate__animated animate__zoomIn">
-  <mat-toolbar color="primary">Adicionar</mat-toolbar>
+  <mat-toolbar>Adicionar</mat-toolbar>
 
   <mat-card-content>
     <form [formGroup]="form" class="min-width">
@@ -14,7 +14,7 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="full-width">
-        <mat-select formControlName="category" placeholder="Categoria">
+        <mat-select placeholder="Categoria" formControlName="category">
           <mat-option value="null"></mat-option>
           <mat-option value="Entrada">Entrada</mat-option>
           <mat-option value="Saída">Saída</mat-option>

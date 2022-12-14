@@ -1,24 +1,51 @@
 mat-card {
   border-radius: 10px;
   max-width: 50%;
+  background-color: var(--bg-card);
 }
 
 mat-toolbar {
   border-radius: 10px;
+  background-color: var(--primary);
+  color: var(--color-text);
 }
 
 mat-card-content {
   padding-top: 10px;
+  background-color: var(--bg-card);
+}
+mat-label {
+  color: var(--color-text-gray)!important;
 }
 
+//cor placeholder
+::ng-deep .mat-input-element::placeholder{
+  color: var(--color-text-gray)!important;
+}
+
+//input outline color
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: var(--color-text-gray)!important;
+}
+
+mat-select {
+  color: var(--color-text-gray)!important;
+}
+
+//cor placeholder
+::ng-deep .mat-select-placeholder{
+  color: var(--color-text-gray)!important;
+}
 
 .full-width {
   width: 100%;
+  //color: var(--color-text-black);
 }
 
 .min-width {
   width: 100%;
   min-width: 150px;
+  //color: var(--color-text-black);
 }
 
 .button-save {

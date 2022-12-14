@@ -1,57 +1,60 @@
-<mat-card class="animate__animated animate__fadeInDownBig">
-  <mat-toolbar color="primary">
-    <span>Receitas do Mês</span>
-
-    <div>
-      <button
-        class="btn-icon"
-        mat-icon-button
-        aria-label="back"
-        (click)="onCancel()"
-      >
-        <mat-icon>clear</mat-icon>
-      </button>
+<div>
+  <mat-card class="animate__animated animate__fadeInDownBig">
+    <mat-toolbar>
+      <span>Receitas do Mês</span>
+  
+      <div>
+        <button
+          class="btn-icon"
+          mat-icon-button
+          aria-label="back"
+          (click)="onCancel()"
+        >
+          <mat-icon>clear</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar>
+  
+    <div
+      class="column-flex mat-elevation-z8"
+      *ngIf="finance$ | async as finance; else loading"
+    >
+      <mat-table [dataSource]="finance">
+        <ng-container matColumnDef="credit">
+          <mat-header-cell *matHeaderCellDef> Valor </mat-header-cell>
+          <mat-cell *matCellDef="let fina">
+            {{ fina.credit | currency : "BRL" }}
+          </mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="description">
+          <mat-header-cell *matHeaderCellDef> Descrição </mat-header-cell>
+          <mat-cell *matCellDef="let fina"> {{ fina.description }} </mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="category">
+          <mat-header-cell *matHeaderCellDef> Categoria </mat-header-cell>
+          <mat-cell *matCellDef="let fina">
+            {{ fina.category }}
+            <mat-icon
+              class="icon-category"
+              aria-hidden="false"
+              aria-label="Categoria do curso"
+              >{{ fina.category | category }}</mat-icon
+            >
+          </mat-cell>
+        </ng-container>
+  
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      </mat-table>
     </div>
-  </mat-toolbar>
-
-  <div
-    class="column-flex mat-elevation-z8"
-    *ngIf="finance$ | async as finance; else loading"
-  >
-    <mat-table [dataSource]="finance">
-      <ng-container matColumnDef="credit">
-        <mat-header-cell *matHeaderCellDef> Valor </mat-header-cell>
-        <mat-cell *matCellDef="let fina">
-          {{ fina.credit | currency : "BRL" }}
-        </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="description">
-        <mat-header-cell *matHeaderCellDef> Descrição </mat-header-cell>
-        <mat-cell *matCellDef="let fina"> {{ fina.description }} </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="category">
-        <mat-header-cell *matHeaderCellDef> Categoria </mat-header-cell>
-        <mat-cell *matCellDef="let fina">
-          {{ fina.category }}
-          <mat-icon
-            class="icon-category"
-            aria-hidden="false"
-            aria-label="Categoria do curso"
-            >{{ fina.category | category }}</mat-icon
-          >
-        </mat-cell>
-      </ng-container>
-
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-    </mat-table>
-  </div>
-  <!--Caso o observable retornar falso, exibe o spinner-->
-  <ng-template #loading>
-    <div class="loading-spinner">
-      <mat-spinner></mat-spinner>
-    </div>
-  </ng-template>
-</mat-card>
+    <!--Caso o observable retornar falso, exibe o spinner-->
+    <ng-template #loading>
+      <div class="loading-spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+    </ng-template>
+  </mat-card>
+  
+</div>
