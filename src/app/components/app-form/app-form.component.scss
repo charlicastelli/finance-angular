@@ -15,37 +15,38 @@ mat-card-content {
   background-color: var(--bg-card);
 }
 mat-label {
-  color: var(--color-text-gray)!important;
+  color: var(--color-text-gray) !important;
 }
 
 //cor placeholder
-::ng-deep .mat-input-element::placeholder{
-  color: var(--color-text-gray)!important;
+::ng-deep .mat-input-element::placeholder {
+  color: var(--color-text-gray) !important;
 }
 
 //input outline color
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
-  color: var(--color-text-gray)!important;
-}
-
-mat-select {
-  color: var(--color-text-gray)!important;
+  color: var(--color-text-gray) !important;
 }
 
 //cor placeholder
-::ng-deep .mat-select-placeholder{
-  color: var(--color-text-gray)!important;
+::ng-deep .mat-select-placeholder {
+  color: var(--color-text-gray) !important;
+}
+::ng-deep .mat-select-arrow {
+  color: var(--color-text-black);
+}
+::ng-deep .mat-select-value {
+  color: var(--color-text-black);
 }
 
 .full-width {
   width: 100%;
-  //color: var(--color-text-black);
+  color: var(--color-text-black);
 }
 
 .min-width {
   width: 100%;
   min-width: 150px;
-  //color: var(--color-text-black);
 }
 
 .button-save {
@@ -53,10 +54,12 @@ mat-select {
   border-radius: 10px;
   height: 50px;
   width: 150px;
+  background-color: var(--primary);
+  color: var(--color-text);
 }
 
 .button-save:hover {
-  transform:scale(1.05);
+  transform: scale(1.05);
   background-color: #7b45da;
 }
 
@@ -65,9 +68,11 @@ mat-select {
   border-radius: 10px;
   height: 50px;
   width: 150px;
+  background-color: var(--warn);
+  color: var(--color-text);
 }
 
 .button-cancel:hover {
-  background-color: #FB1B0A;
-  transform:scale(1.05);
+  background-color: #f75c51;
+  transform: scale(1.05);
 }

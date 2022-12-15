@@ -2,3 +2,7 @@ mat-toolbar {
     background-color: var(--primary);
     color: var(--color-text);
 }
+
+mat-icon:hover {
+    transform: scale(1.3);
+}

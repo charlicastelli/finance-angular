@@ -14,7 +14,6 @@ mat-header-cell {
   font-weight: bold;
   background-color: var(--bg-header-cell);
   color: var(--color-text-black);
-  //border-radius: 10px;
 }
 mat-cell {
   background-color: var(--bg-cell);
@@ -36,5 +35,9 @@ mat-cell {
   display: flex;
   text-align: center;
   justify-content: center;
+}
+
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: var(--primary)!important;
 }
 

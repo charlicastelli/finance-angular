@@ -38,3 +38,7 @@ mat-cell {
   justify-content: center;
 }
 
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: var(--primary)!important;
+}
+

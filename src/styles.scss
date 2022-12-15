@@ -1,26 +1,5 @@
 @import "@angular/material/theming";
 
-// @include mat-core();
-
-// $primary: mat-palette($mat-blue);
-// $accent: mat-palette($mat-pink, A200, A100, A400);
-// $warn: mat-palette($mat-red);
-// $theme: mat-light-theme($primary, $accent, $warn);
-
-// @include angular-material-theme($theme);
-// //@include component-themes($theme);
-
-// // Our dark theme
-// .dark-theme {
-//   $dark-primary: mat-palette($mat-purple, A700);
-//   $dark-accent: mat-palette($mat-green, A400, A100, A400);
-//   $dark-warn: mat-palette($mat-red);
-//   $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
-
-//   @include angular-material-theme($dark-theme);
-//   //@include component-themes($dark-theme);
-// }
-
 //>>>OUTRA OPÇÃO DE MUDANÇA DE TEMA<<<
 // $general-typography: mat-typography-config(
 //   $font-family: '"Open Sans", "Helvetica Neue", sans-serif',
@@ -56,43 +35,29 @@
   height: 100%;
   --primary: #310f61;
   --background: #ffffff;
+  --warn: #FB1B0A;
   --bg-card: #ffffff;
   --bg-cell: #ffffff;
   --bg-header-cell: #ffffff;
   --color-text-black: #000000;
   --color-text-gray: #A7A7A7;
   --color-text: #ffffff;
-  --accent: rgba(184, 245, 248, 1);
-  --triangle: transparent linear-gradient(51deg, #e9edf8 0%, #ffffff 100%) 0% 0%
-    no-repeat padding-box;
-  --graph: rgba(223, 226, 234, 1);
-  --graph-border: 1px solid rgba(223, 226, 234, 1);
+  --accent: #FFCA2C;
+
 }
 
 :root .dark-theme {
   height: 100%;
-  --primary: #d189ff;
+  --primary: #6730EC;
   --background: #26293b;
+  --warn: #ff3863;
   --bg-card: #303347;
   --bg-cell: #303347;
   --bg-header-cell: #303347;
   --color-text-black: #ffffff;
   --color-text-gray: #FFFFFF;
   --color-text: #ffffff;
-  --accent: rgba(184, 245, 248, 1);
-  --triangle: transparent
-    linear-gradient(
-      52deg,
-      #030303 0%,
-      #2d2d2d 36%,
-      #373737 52%,
-      #555555 69%,
-      #707070 92%,
-      #fefefe 100%
-    )
-    0% 0% no-repeat padding-box;
-  --graph: #3a3a3a;
-  --graph-border: 1px solid #707070;
+  --accent: #FFCA2C;
 }
 
 mat-toolbar {
@@ -128,7 +93,7 @@ body {
 }
 
 .btn-icon:hover {
-  background-color: #7b45da;
+  background-color: #49178f;
   transform: scale(1.1);
 }
 
@@ -136,3 +101,5 @@ input {
   //Primeira letra maiuscula
   text-transform: capitalize;
 }
+
+

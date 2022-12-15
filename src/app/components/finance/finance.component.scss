@@ -1,9 +1,12 @@
 mat-card {
   border-radius: 10px;
+  background-color: var(--bg-card);
 }
 
 mat-toolbar {
   border-radius: 10px;
+  background-color: var(--primary);
+  color: var(--color-text);
 }
 
 .btn-icon {
@@ -19,10 +22,14 @@ mat-toolbar {
 
 .loading-spinner {
   padding: 25px;
-  background-color: #eaeaea;
+  background-color: var(--background);
   display: flex;
   text-align: center;
   justify-content: center;
+}
+
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: var(--primary)!important;
 }
 
 //SEARCH
@@ -33,6 +40,7 @@ mat-toolbar {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  color: var(--color-text-black);
 }
 
 .search-container form {
@@ -50,6 +58,14 @@ mat-toolbar {
   padding: 0.5em;
   width: 100%;
   text-align: center;
+  background-color: var(--bg-card);
+  color: var(--color-text-black);
+  border-color: var(--color-text-black);
+}
+
+//cor placeholder
+input::placeholder {
+  color: var(--color-text-gray);
 }
 
 //CALENDARIO
@@ -67,7 +83,6 @@ mat-toolbar {
   display: none;
 }
 
-
 .mat-calendar-arrow {
   display: none;
 }
@@ -84,17 +99,72 @@ mat-form-field {
 mat-datepicker-toggle {
   position: relative;
   top: 8px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 mat-datepicker-toggle:hover {
-  color: #bdbbc0;
+  color: #d4a5f1;
 }
 
+//fundo datepicker
+::ng-deep .mat-datepicker-content .mat-calendar {
+  background-color: var(--bg-card);
+}
+
+//meses datepicker
+::ng-deep .mat-calendar-body-cell-content {
+  color: var(--color-text-black);
+}
+
+// // mater cor de fundo na data atual
+// ::ng-deep .mat-calendar-body-today {
+//   background-color: #4c506e;
+// }
+
+
+//cor de fundo data selecionada
+::ng-deep .mat-calendar-body-selected {
+  color: var(--color-text);
+  background-color: var(--primary);
+}
+
+//ano exibido
+::ng-deep .mat-calendar-body-label {
+  color: var(--color-text-black);
+}
+
+//botao escolher ano
+::ng-deep .mat-datepicker-content {
+  color: var(--color-text-black);
+}
+
+//arrow
+::ng-deep .mat-calendar-arrow {
+  fill: var(--color-text-black);
+}
+
+//previous
+::ng-deep .mat-datepicker-content .mat-calendar-previous-button {
+  color: var(--color-text-black);
+}
+
+//next
+::ng-deep .mat-datepicker-content .mat-calendar-next-button {
+  color: var(--color-text-black);
+}
+
+::ng-deep .mat-calendar-table-header {
+  color: var(--color-text-black);
+}
+
+//cor de fundo ao passar o mouse sobre as datas
+::ng-deep .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
+  background-color: var(--primary);
+  color: var(--color-text);
+}
 
 
 //OCULTAR A LINHA SUBLINADA DO FORM-FIELD
 ::ng-deep .mat-form-field-underline {
   display: none;
-  
 }

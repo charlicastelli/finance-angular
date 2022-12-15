@@ -1,0 +1,9 @@
+::ng-deep .mat-dialog-container {
+    color: var(--color-text-black);
+    background: var(--bg-card);
+  }
+
+  .ok {
+    background-color: var(--primary);
+    color: var(--color-text);
+}
