@@ -13,6 +13,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Dentro do arquivo `tsconfig.json`
 - No `compilerOptions{ }` adicionar o comando `"allowSyntheticDefaultImports": true`
 
+## Comando para criar um `module` e um `routing.module`
+- `ng generate module components --routing` - (cria uma pasta chamada "components" com o módulo e um routing)
+
 ## Images
 ![1](https://user-images.githubusercontent.com/80997263/207950272-d48f7c65-4f40-4504-a6a6-6afac7a330f1.png)
 ![2](https://user-images.githubusercontent.com/80997263/207950283-a07ab726-f73a-4ab5-adca-6a86d21e0dc7.png)
