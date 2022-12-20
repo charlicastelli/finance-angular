@@ -18,6 +18,7 @@ const moment = _rollupMoment || _moment;
 export class AppExitsComponent implements OnInit {
   finance$: Observable<Model[]>;
 
+  
   readonly displayedColumns = ['credit', 'description', 'category'];
 
   constructor(
@@ -27,7 +28,7 @@ export class AppExitsComponent implements OnInit {
     //Utilizei o pipe e o filter pois queria exibir apenas a categoria entrada
     this.finance$ = this.financeService
       .list()
-      .pipe(map((item) => item.filter((item) => item.category === 'Saída' && item._date === moment().format('YYYY-MM'))));
+      .pipe(map((item) => item.filter((item) => item.category != 'Pagamento' && item._date === moment().format('YYYY-MM'))));
   }
 
   ngOnInit(): void {}

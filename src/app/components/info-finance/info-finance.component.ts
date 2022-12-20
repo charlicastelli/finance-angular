@@ -16,14 +16,14 @@ export class InfoFinanceComponent implements OnInit {
 
   getTotalAppetizer() {
     const totalValue = this.finance.filter(
-      (getTotal, index, array) => getTotal.category === 'Entrada'
+      (getTotal, index, array) => getTotal.category === 'Pagamento'
     );
     return totalValue.reduce((prev, elem) => parseFloat(prev + elem.credit), 0);
   }
 
   getTotalExits() {
     const totalValue = this.finance.filter(
-      (getTotal, index, array) => getTotal.category === 'Saída'
+      (getTotal, index, array) => getTotal.category != 'Pagamento'
     );
     return totalValue.reduce((prev, elem) => parseFloat(prev + elem.credit), 0);
   }

@@ -42,3 +42,10 @@ mat-cell {
   stroke: var(--primary)!important;
 }
 
+
+.chart {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

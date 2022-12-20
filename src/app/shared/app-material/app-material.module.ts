@@ -14,6 +14,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatDialogModule,
     MatNativeDateModule,
     MatSlideToggleModule,
-    DragDropModule
+    DragDropModule,
+    NgApexchartsModule
   ],
 })
 export class AppMaterialModule {}

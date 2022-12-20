@@ -6,11 +6,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class CategoryPipe implements PipeTransform {
   transform(value: string): string {
     switch (value) {
-      case 'Entrada':
+      case 'Pagamento':
         return 'arrow_upwards';
-      case 'Saída':
-        return 'arrow_downward';
+      // case 'Moradia':
+      //   return 'arrow_downward';
     }
-    return 'trending_up';
+    return 'arrow_downward';
   }
 }

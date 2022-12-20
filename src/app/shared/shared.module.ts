@@ -7,12 +7,14 @@ import { ErrorDialogComponent } from './dialog/error-dialog/error-dialog.compone
 import { CategoryPipe } from './pipes/category.pipe';
 import { MessagesComponent } from './messages/messages.component';
 
+
 @NgModule({
   declarations: [
     CategoryPipe,
     ErrorDialogComponent,
     ConfirmationDialogComponent,
-    MessagesComponent
+    MessagesComponent,
+    
   ],
   imports: [CommonModule, AppMaterialModule],
   exports: [CategoryPipe, ErrorDialogComponent, ConfirmationDialogComponent, MessagesComponent],

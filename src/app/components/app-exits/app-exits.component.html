@@ -55,3 +55,9 @@
     </div>
   </ng-template>
 </mat-card>
+<div class="chart">
+  <app-chart-exits
+  *ngIf="finance$ | async as finance"
+  [finance]="finance"
+></app-chart-exits>
+</div>

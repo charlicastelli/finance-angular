@@ -28,7 +28,7 @@ export class AppAppetizerComponent implements OnInit {
     //Utilizei o pipe e o filter pois queria exibir apenas a categoria entrada
     this.finance$ = this.financeService
       .list()
-      .pipe(map((item) => item.filter((item) => item.category === 'Entrada' && item._date === moment().format('YYYY-MM'))));
+      .pipe(map((item) => item.filter((item) => item.category === 'Pagamento' && item._date === moment().format('YYYY-MM'))));
   }
 
   ngOnInit(): void {}
