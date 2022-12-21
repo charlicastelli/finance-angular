@@ -1,5 +1,11 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { ApexChart, ApexNonAxisChartSeries, ApexResponsive, ChartComponent } from 'ng-apexcharts';
+import {
+  ApexChart,
+  ApexDataLabels,
+  ApexNonAxisChartSeries,
+  ApexResponsive,
+  ChartComponent,
+} from 'ng-apexcharts';
 import { Model } from 'src/app/model/model';
 
 export type ChartOptions = {
@@ -7,20 +13,22 @@ export type ChartOptions = {
   chart: ApexChart;
   responsive: ApexResponsive[];
   labels: any;
+  colors: any;
+  dataLabels: ApexDataLabels;
 };
 
 @Component({
   selector: 'app-chart-exits',
   templateUrl: './chart-exits.component.html',
-  styleUrls: ['./chart-exits.component.scss']
+  styleUrls: ['./chart-exits.component.scss'],
 })
 export class ChartExitsComponent implements OnInit {
   @Input() finance: Model[] = [];
 
-  @ViewChild("chart") chart!: ChartComponent;
-  public chartOptions!: Partial<ChartOptions>;
+  @ViewChild('chart') chart!: ChartComponent;
+  public chartOptions!: ChartOptions;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     this.pieChart();
@@ -84,7 +92,8 @@ export class ChartExitsComponent implements OnInit {
 
   getTotalFerramentas() {
     const totalValue = this.finance.filter(
-      (getTotal, index, array) => getTotal.category === 'Ferramentas e Acessórios'
+      (getTotal, index, array) =>
+        getTotal.category === 'Ferramentas e Acessórios'
     );
     return totalValue.reduce((prev, elem) => parseFloat(prev + elem.credit), 0);
   }
@@ -103,13 +112,12 @@ export class ChartExitsComponent implements OnInit {
     return totalValue.reduce((prev, elem) => parseFloat(prev + elem.credit), 0);
   }
 
-
+  //Grafico formato pie exibe todas as categorias de despesas
   pieChart() {
-    
     this.chartOptions = {
       series: [
-        Number(this.getTotalMoradia()), 
-        Number(this.getTotalTransporte()), 
+        Number(this.getTotalMoradia()),
+        Number(this.getTotalTransporte()),
         Number(this.getTotalLazer()),
         Number(this.getTotalAlim()),
         Number(this.getTotalSaude()),
@@ -118,40 +126,61 @@ export class ChartExitsComponent implements OnInit {
         Number(this.getTotalCuidados()),
         Number(this.getTotalFerramentas()),
         Number(this.getTotalLanches()),
-        Number(this.getTotalOutros())
+        Number(this.getTotalOutros()),
+      ],
+      dataLabels: {
+        enabled: true,
+        style: {
+          fontSize: '14px',
+          fontFamily: 'Helvetica, Arial, sans-serif',
+          fontWeight: 'bold',
+        },
+      },
+      colors: [
+        '#4D80D4',
+        '#836FFF',
+        '#00BFFF',
+        '#62D2A2',
+        '#006400',
+        '#522546',
+        '#B8860B',
+        '#FF69B4',
+        '#DC143C',
+        '#FB1B0A',
+        '#FFFF00',
       ],
       chart: {
         width: 800,
-        type: "pie"
+        type: 'pie',
+        foreColor: '#A7A7A7',
       },
+
       labels: [
-        "Moradia",
-        "Transporte", 
-        "Lazer", 
-        "Alimentação",
-        "Saúde",
-        "Vestuário",
-        "Assinaturas",
-        "Cuidados Pessoais",
-        "Ferramentas e Acessórios",
-        "Lanches",
-        "Outros",
-        
+        'Moradia',
+        'Transporte',
+        'Lazer',
+        'Alimentação',
+        'Saúde',
+        'Vestuário',
+        'Assinaturas',
+        'Cuidados Pessoais',
+        'Ferramentas e Acessórios',
+        'Lanches',
+        'Outros',
       ],
       responsive: [
         {
           breakpoint: 480,
           options: {
             chart: {
-              width: 200
+              width: 800,
             },
             legend: {
-              position: "bottom"
-            }
-          }
-        }
-      ]
+              position: 'bottom',
+            },
+          },
+        },
+      ],
     };
   }
-
 }
