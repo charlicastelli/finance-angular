@@ -1,3 +1,6 @@
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -8,7 +11,10 @@ import { AppToolbarComponent } from './app-toolbar/app-toolbar.component';
 import { FinanceResolver } from './guards/finance.resolver';
 
 const routes: Routes = [
-  { path: '', component: AppToolbarComponent },
+  { path: '', component: LoginComponent },
+  { path: 'toolbar', component: AppToolbarComponent },
+  { path: 'signup', component: SignupComponent },
+
   { path: 'appetizer', component: AppAppetizerComponent },
   { path: 'exits', component: AppExitsComponent },
   {

@@ -1,0 +1,72 @@
+mat-card {
+  max-width: 600px;
+  min-width: 400px;
+  margin: 2em auto;
+  text-align: center;
+  border-radius: 10px;
+  background-color: var(--bg-card);
+}
+
+mat-form-field {
+  display: block;
+}
+
+mat-card-content {
+  padding-top: 100px;
+  background-color: var(--bg-card);
+}
+mat-label {
+  color: var(--color-text-gray) !important;
+}
+h2 {
+  color: var(--color-text-black) !important;
+}
+
+//cor placeholder
+::ng-deep .mat-input-element::placeholder {
+  color: var(--color-text-gray) !important;
+}
+
+//input outline color
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: var(--color-text-gray) !important;
+}
+
+//cor placeholder
+::ng-deep .mat-select-placeholder {
+  color: var(--color-text-gray) !important;
+}
+::ng-deep .mat-select-arrow {
+  color: var(--color-text-black);
+}
+::ng-deep .mat-select-value {
+  color: var(--color-text-black);
+}
+
+nav {
+  display: flex;
+}
+
+.full-width {
+  width: 100%;
+  color: var(--color-text-black);
+}
+
+.min-width {
+  width: 100%;
+  min-width: 150px;
+}
+
+.button-login {
+  margin: 0 15px;
+  border-radius: 10px;
+  height: 50px;
+  width: 150px;
+  background-color: var(--primary);
+  color: var(--color-text);
+}
+
+.button-login:hover {
+  transform: scale(1.05);
+  background-color: #6993d6;
+}

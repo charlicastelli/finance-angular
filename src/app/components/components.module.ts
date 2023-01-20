@@ -14,6 +14,9 @@ import { ComponentsRoutingModule } from './components-routing.module';
 import { FinanceComponent } from './finance/finance.component';
 import { InfoFinanceComponent } from './info-finance/info-finance.component';
 
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+
 @NgModule({
   declarations: [
     AppToolbarComponent,
@@ -25,6 +28,8 @@ import { InfoFinanceComponent } from './info-finance/info-finance.component';
     FinanceComponent,
     InfoFinanceComponent,
     ChartExitsComponent,
+    LoginComponent,
+    SignupComponent,
   ],
   imports: [
     CommonModule,
