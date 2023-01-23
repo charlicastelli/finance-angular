@@ -20,7 +20,12 @@
 
     <div class="div-date">
       <mat-form-field>
-        <input matInput [matDatepicker]="dp" [formControl]="date" readonly="true" />
+        <input
+          matInput
+          [matDatepicker]="dp"
+          [formControl]="date"
+          readonly="true"
+        />
         <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
         <mat-datepicker
           #dp
@@ -67,7 +72,6 @@
       >
         <mat-icon>logout</mat-icon>
       </button>
-
     </div>
   </mat-toolbar>
 

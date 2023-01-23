@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { first, tap } from 'rxjs';
 import { Model } from 'src/app/model/model';
 
-
 @Injectable({
   providedIn: 'root',
 })

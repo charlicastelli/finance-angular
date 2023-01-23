@@ -13,12 +13,12 @@ import { ChartExitsComponent } from './chart-exits/chart-exits.component';
 import { ComponentsRoutingModule } from './components-routing.module';
 import { FinanceComponent } from './finance/finance.component';
 import { InfoFinanceComponent } from './info-finance/info-finance.component';
-
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
+    LoginComponent,
     AppToolbarComponent,
     AppListComponent,
     AppAppetizerComponent,
@@ -28,7 +28,7 @@ import { SignupComponent } from './signup/signup.component';
     FinanceComponent,
     InfoFinanceComponent,
     ChartExitsComponent,
-    LoginComponent,
+
     SignupComponent,
   ],
   imports: [

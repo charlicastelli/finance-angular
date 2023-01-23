@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("token",res.token);
 
         if(this.role === 'user') {
-          this.router.navigate(['toolbar'], { relativeTo: this.route });
+          this.router.navigate(['app-toolbar'], { relativeTo: this.route });
         } 
 
       }
@@ -75,5 +75,6 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['signup'], { relativeTo: this.route });
     } 
   }
+
 
 }

@@ -23,4 +23,9 @@ export class AuthService {
   signUp(user : User) : Observable<any> {
     return this.httpClient.post<any>(this.signUpUrl,user);
   }
+
+
+  authenticatedUser() {
+    return this.login;
+  }
 }
