@@ -1,14 +1,19 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/user';
+import { MessagesService } from '../services/messages/messages.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
+})
+
+@Injectable({
+  providedIn: 'root'
 })
 export class LoginComponent implements OnInit {
   formData: User | null = null;
@@ -23,15 +28,17 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService : AuthService, 
     private router: Router, 
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private messagesService: MessagesService
     ) { }
 
   ngOnInit(): void {
 
+
     this.form = new FormGroup({
       name: new FormControl(this.formData ? this.formData.name : ''),
       username: new FormControl(this.formData ? this.formData.username : '', [
-        Validators.required,
+        Validators.required, Validators.email
       ]),
       password: new FormControl(this.formData ? this.formData.password : '', [
         Validators.required,
@@ -49,22 +56,21 @@ export class LoginComponent implements OnInit {
     this.user.name = this.name;
 
     this.authService.login(this.form.value).subscribe(res => {
-
       if(res === null) {
-        alert("Username or password is wrong");
+        this.onError();
         this.ngOnInit();
+
       }else {
         console.log("Login successful");
         localStorage.setItem("token",res.token);
-
         if(this.role === 'user') {
           this.router.navigate(['app-toolbar'], { relativeTo: this.route });
         } 
 
       }
 
-    }, err => {
-      alert("Login falhou");
+    }, (err) => {
+      this.onError();
       this.ngOnInit();
     })
 
@@ -76,5 +82,17 @@ export class LoginComponent implements OnInit {
     } 
   }
 
+  async onError() {
+    this.messagesService.header('Falha na autenticação');
+    this.messagesService.add('Nome de usuário ou senha incorretos!');
+  }
+  
 
+  // authenticatedUser() {
+  //   if(this.auth === true) {
+  //     console.log(this.auth);
+  //     return true
+  //   }
+  //   return false;
+  // }
 }

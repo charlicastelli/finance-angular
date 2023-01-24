@@ -1,3 +1,4 @@
+<app-message-error></app-message-error>
 <nav class="animate__animated animate__bounce general">
   <img src="../../../assets/image.png" width="60%" />
   <mat-card>
@@ -17,6 +18,12 @@
             placeholder="Endereço de E-mail"
             formControlName="username"
           />
+          <mat-error *ngIf="form.hasError('username') && !form.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="form.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="full-width">
@@ -29,6 +36,7 @@
           />
         </mat-form-field>
       </form>
+      
     </mat-card-content>
 
     <mat-card-actions>
@@ -37,10 +45,12 @@
         Voltar
       </button>
 
-      <button class="button-register" mat-raised-button (click)="signup()">
+      <button [disabled]="!form.valid" class="button-register" mat-raised-button (click)="signup()">
         <mat-icon>done</mat-icon>
         Cadastrar
       </button>
     </mat-card-actions>
   </mat-card>
+  
 </nav>
+

@@ -1,3 +1,4 @@
+<app-message-error></app-message-error>
 <nav class="animate__animated animate__bounce general">
   <img src="../../../assets/image.png" width="60%" />
   <mat-card>
@@ -20,14 +21,6 @@
     </mat-card-content>
 
     <mat-card-actions>
-        <button
-          class="button-login"
-          mat-raised-button
-          (click)="login()"
-        >
-          <mat-icon>login</mat-icon>
-          Entrar
-        </button>
 
         <button
           class="button-login"
@@ -38,7 +31,16 @@
           Nova conta
         </button>
 
+        <button
+          class="button-login"
+          mat-raised-button
+          (click)="login()"
+          [disabled]="form.invalid"
+        >
+          <mat-icon>login</mat-icon>
+          Entrar
+        </button>
+
       </mat-card-actions>
-      
   </mat-card>
 </nav>

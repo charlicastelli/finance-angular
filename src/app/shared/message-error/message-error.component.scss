@@ -1,0 +1,40 @@
+.message {
+    position: fixed;
+    top: 1%;
+    width: 30%;
+    margin-left: 50%;
+    left: 17%;
+    z-index: 10;
+    background-color: #FB1B0A;
+    border: 1px solid #FB1B0A;
+    padding: 1.5em;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    color: #ffffff;
+  }
+  
+  .message-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+  }
+  
+  .message-header button {
+    padding: 0.5em;
+    cursor: pointer;
+  }
+  
+  .message p {
+    font-size: 1.2em;
+  }
+  
+  .clear {
+    color: #ffffff;
+  }
+  
+  .clear:hover {
+    color: #f77269;
+    transform: scale(1.4);
+  }
+  

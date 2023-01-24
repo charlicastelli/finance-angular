@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Model } from 'src/app/model/model';
 
@@ -16,6 +16,9 @@ import { FinanceService } from './../services/finance.service';
 export class AppFormComponent implements OnInit {
   formData: Model | null = null;
   form!: FormGroup;
+
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
   constructor(
     private location: Location,
@@ -33,9 +36,13 @@ export class AppFormComponent implements OnInit {
         Validators.required,
       ]),
       description: new FormControl(
-        this.formData ? this.formData.description : ''
+        this.formData ? this.formData.description : '', [
+          Validators.required,
+        ]
       ),
-      category: new FormControl(this.formData ? this.formData.category : ''),
+      category: new FormControl(this.formData ? this.formData.category : '', [
+          Validators.required,
+        ]),
       date: new FormControl(this.formData ? this.formData._date : ''),
     });
 
@@ -68,6 +75,10 @@ export class AppFormComponent implements OnInit {
   }
 
   private onError() {
-    this.snackbar.open('Erro ao salvar item.', '', { duration: 5000 });
+    this.snackbar.open('Erro ao salvar item', 'X', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+      duration: 3000
+    });
   }
 }

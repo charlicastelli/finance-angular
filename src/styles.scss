@@ -10,9 +10,9 @@
   --bg-header-cell: #ffffff;
   --color-text-black: #000000;
   --color-text-gray: #A7A7A7;
+  --color-text-disabled: #A7A7A7;
   --color-text: #ffffff;
   --accent: #FFCA2C;
-
 }
 
 :root .dark-theme {
@@ -25,6 +25,7 @@
   --bg-header-cell: #303347;
   --color-text-black: #ffffff;
   --color-text-gray: #FFFFFF;
+  --color-text-disabled: #A7A7A7;
   --color-text: #ffffff;
   --accent: #FFCA2C;
 }

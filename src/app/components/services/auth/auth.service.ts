@@ -16,16 +16,19 @@ export class AuthService {
     this.signUpUrl = "http://localhost:8080/auth/register";
   }
 
-  login(user : User) : Observable<any> {
-    return this.httpClient.post<any>(this.loginUrl,user);
+  login(user : User) : Observable<User> {
+    return this.httpClient.post<User>(this.loginUrl,user);
   }
 
-  signUp(user : User) : Observable<any> {
-    return this.httpClient.post<any>(this.signUpUrl,user);
+  signUp(user : User) : Observable<User> {
+    return this.httpClient.post<User>(this.signUpUrl,user);
   }
 
 
   authenticatedUser() {
-    return this.login;
+    if(this.login === null) {
+      return false;
+    }
+    return true;
   }
 }

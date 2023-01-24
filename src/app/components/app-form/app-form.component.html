@@ -36,6 +36,16 @@
 
   <mat-card-actions>
     <button
+      class="button-cancel"
+      mat-raised-button
+      (click)="onCancel()"
+    >
+      <mat-icon>cancel</mat-icon>
+      Cancelar
+    </button>
+
+    <button
+      [disabled]="!form.valid"
       class="button-save"
       mat-raised-button
       (click)="onSubmit()"
@@ -44,13 +54,5 @@
       Salvar
     </button>
 
-    <button
-      class="button-cancel"
-      mat-raised-button
-      (click)="onCancel()"
-    >
-      <mat-icon>cancel</mat-icon>
-      Cancelar
-    </button>
   </mat-card-actions>
 </mat-card>

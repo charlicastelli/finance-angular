@@ -76,3 +76,18 @@ mat-label {
   background-color: #f75c51;
   transform: scale(1.05);
 }
+
+//BOTÃO DESABILITADO
+::ng-deep .mat-flat-button.mat-primary.mat-button-disabled, .mat-flat-button.mat-accent.mat-button-disabled, .mat-flat-button.mat-warn.mat-button-disabled, .mat-flat-button.mat-button-disabled.mat-button-disabled, .mat-raised-button.mat-primary.mat-button-disabled, .mat-raised-button.mat-accent.mat-button-disabled, .mat-raised-button.mat-warn.mat-button-disabled, .mat-raised-button.mat-button-disabled.mat-button-disabled, .mat-fab.mat-primary.mat-button-disabled, .mat-fab.mat-accent.mat-button-disabled, .mat-fab.mat-warn.mat-button-disabled, .mat-fab.mat-button-disabled.mat-button-disabled, .mat-mini-fab.mat-primary.mat-button-disabled, .mat-mini-fab.mat-accent.mat-button-disabled, .mat-mini-fab.mat-warn.mat-button-disabled, .mat-mini-fab.mat-button-disabled.mat-button-disabled {
+  color: var(--color-text-disabled);
+}
+
+::ng-deep .mat-snack-bar-container {
+  color: #FFFFFF;
+  background: #FB1B0A;
+}
+
+::ng-deep .mat-button, .mat-icon-button, .mat-stroked-button {
+  color: #FFFFFF;
+  background: transparent;
+}
