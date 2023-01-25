@@ -1,10 +1,11 @@
-
 import { Component, Injectable, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../services/auth/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/user';
+
+import { AuthService } from '../services/auth/auth.service';
 import { MessagesService } from '../services/messages/messages.service';
+
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,8 @@ import { MessagesService } from '../services/messages/messages.service';
 export class LoginComponent implements OnInit {
   formData: User | null = null;
   form!: FormGroup;
+
+  hide: boolean = true;
 
   username : string = '';
   password : string = '';
@@ -63,6 +66,7 @@ export class LoginComponent implements OnInit {
       }else {
         console.log("Login successful");
         localStorage.setItem("token",res.token);
+        localStorage.setItem("name",res.name);
         if(this.role === 'user') {
           this.router.navigate(['app-toolbar'], { relativeTo: this.route });
         } 
@@ -88,11 +92,15 @@ export class LoginComponent implements OnInit {
   }
   
 
-  // authenticatedUser() {
-  //   if(this.auth === true) {
-  //     console.log(this.auth);
-  //     return true
-  //   }
-  //   return false;
-  // }
+  getErrorMessageUserName() {
+    if ( this.form.controls['username'].hasError('required')) {
+      return 'E-mail Obrigatório';
+    }
+
+    return this.form.controls['username'].invalid || this.form.controls['username'].hasError('required') ? 'E-mail Inválido' : '';
+  }
+
+  getErrorMessagePassword() {
+    return this.form.controls['password'].invalid || this.form.controls['password'].hasError('required') ? 'Campo Obrigatório' : '';
+  }
 }

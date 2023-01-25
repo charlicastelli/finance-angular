@@ -81,4 +81,25 @@ export class AppFormComponent implements OnInit {
       duration: 3000
     });
   }
+
+  getErrorCredit() {
+    return this.form.controls['credit'].invalid ||
+      this.form.controls['credit'].hasError('required')
+      ? 'Campo Obrigatório'
+      : '';
+  }
+
+  getErrorDescription() {
+    return this.form.controls['description'].invalid ||
+      this.form.controls['description'].hasError('required')
+      ? 'Campo Obrigatório'
+      : '';
+  }
+
+  getErrorCategory() {
+    return this.form.controls['category'].invalid ||
+      this.form.controls['category'].hasError('required')
+      ? 'Escolha uma categoria válida'
+      : '';
+  }
 }

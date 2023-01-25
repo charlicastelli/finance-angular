@@ -8,8 +8,6 @@ export class CategoryPipe implements PipeTransform {
     switch (value) {
       case 'Pagamento':
         return 'arrow_upwards';
-      // case 'Moradia':
-      //   return 'arrow_downward';
     }
     return 'arrow_downward';
   }

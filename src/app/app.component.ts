@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ThemeService } from './components/core/services/theme.service';
 
@@ -11,7 +12,11 @@ export class AppComponent {
   isDarkTheme!: Observable<boolean>;
   check!: boolean;
 
-  constructor(private themeService: ThemeService) {}
+  constructor(
+    private themeService: ThemeService,
+    private router: Router,
+    private route: ActivatedRoute,
+    ) {}
 
   ngOnInit() {
     this.loadTheme();
@@ -37,5 +42,15 @@ export class AppComponent {
       this.toggleDarkTheme(theme);
       this.check = theme;
     }
+  }
+  
+  loadName() {
+    return localStorage.getItem('name');
+  }
+
+  logout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("name");
+    this.router.navigate(['/'], { relativeTo: this.route });
   }
 }

@@ -7,6 +7,7 @@ import { ErrorDialogComponent } from './dialog/error-dialog/error-dialog.compone
 import { CategoryPipe } from './pipes/category.pipe';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageErrorComponent } from './message-error/message-error.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { MessageErrorComponent } from './message-error/message-error.component';
     ConfirmationDialogComponent,
     MessagesComponent,
     MessageErrorComponent,
+    PageNotFoundComponent,
   ],
   imports: [CommonModule, AppMaterialModule],
   exports: [

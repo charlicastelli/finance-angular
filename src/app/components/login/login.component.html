@@ -9,38 +9,48 @@
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>E-mail</mat-label>
           <input matInput placeholder="E-mail" formControlName="username" />
+          <mat-error>{{ getErrorMessageUserName() }}</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Senha</mat-label>
-          <input type="password" matInput placeholder="Senha" formControlName="password" />
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            placeholder="Senha"
+            formControlName="password"
+          />
+          <mat-error>{{ getErrorMessagePassword() }}</mat-error>
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon class="color-btn">{{
+              hide ? "visibility_off" : "visibility"
+            }}</mat-icon>
+          </button>
         </mat-form-field>
-
-        
       </form>
     </mat-card-content>
 
     <mat-card-actions>
+      <button class="button-login" mat-raised-button (click)="signupButton()">
+        <mat-icon>person_add</mat-icon>
+        Nova conta
+      </button>
 
-        <button
-          class="button-login"
-          mat-raised-button
-          (click)="signupButton()"
-        >
-          <mat-icon>person_add</mat-icon>
-          Nova conta
-        </button>
-
-        <button
-          class="button-login"
-          mat-raised-button
-          (click)="login()"
-          [disabled]="form.invalid"
-        >
-          <mat-icon>login</mat-icon>
-          Entrar
-        </button>
-
-      </mat-card-actions>
+      <button
+        class="button-login"
+        mat-raised-button
+        (click)="login()"
+        [disabled]="form.invalid"
+      >
+        <mat-icon>login</mat-icon>
+        Entrar
+      </button>
+    </mat-card-actions>
   </mat-card>
 </nav>

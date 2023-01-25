@@ -5,22 +5,25 @@
     <form [formGroup]="form" class="min-width">
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>R$0,00</mat-label>
-        <input matInput placeholder="R$0,00" formControlName="credit" />
+        <input class="spin-button" matInput type="number" placeholder="R$0,00" formControlName="credit" required />
+        <mat-error>{{ getErrorCredit() }}</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Descrição</mat-label>
-        <input matInput placeholder="Descrição" formControlName="description" />
+        <input matInput placeholder="Descrição" formControlName="description" required/>
+        <mat-error>{{ getErrorDescription() }}</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="full-width">
         <mat-select placeholder="Categoria" formControlName="category">
-          <mat-option value="null"></mat-option>
+          <mat-option value=""></mat-option>
           <mat-option value="Pagamento">Pagamento</mat-option>
-          <mat-option value="null"></mat-option>
+          <mat-option value=""></mat-option>
           <mat-option value="Alimentação">Alimentação</mat-option>
           <mat-option value="Assinaturas">Assinaturas</mat-option>
           <mat-option value="Cuidados Pessoais">Cuidados Pessoais</mat-option>
+          <mat-option value="Estudos">Estudos</mat-option>
           <mat-option value="Ferramentas e Acessórios">Ferramentas e Acessórios</mat-option>
           <mat-option value="Lanches">Lanches</mat-option>
           <mat-option value="Lazer">Lazer</mat-option>
@@ -30,6 +33,7 @@
           <mat-option value="Vestuário">Vestuário</mat-option>
           <mat-option value="Outros">Outros</mat-option>
         </mat-select>
+        <mat-error>{{ getErrorCategory() }}</mat-error>
       </mat-form-field>
     </form>
   </mat-card-content>

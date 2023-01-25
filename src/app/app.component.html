@@ -2,26 +2,43 @@
   <div>
     <mat-toolbar>
       <span>Controle Financeiro</span>
-      <div>
-        <button
-          mat-icon-button
-          aria-label="theme-ligth"
-          *ngIf="check"
-          (click)="toggleDarkTheme((check = false))"
-        >
-          <mat-icon class="btn-theme-light">wb_sunny</mat-icon>
-        </button>
 
-        <button
-          class="btn-theme-dark"
-          mat-icon-button
-          aria-label="theme-dark"
-          *ngIf="!check"
-          (click)="toggleDarkTheme((check = true))"
-        >
-          <mat-icon class="btn-theme-dark">brightness_3</mat-icon>
-        </button>
+      <div >
+        <div class="row">
+          <button
+            mat-icon-button
+            aria-label="theme-ligth"
+            *ngIf="check"
+            (click)="toggleDarkTheme((check = false))"
+          >
+            <mat-icon class="btn-theme-light">wb_sunny</mat-icon>
+          </button>
+  
+          <button
+            class="btn-theme-dark"
+            mat-icon-button
+            aria-label="theme-dark"
+            *ngIf="!check"
+            (click)="toggleDarkTheme((check = true))"
+          >
+            <mat-icon class="btn-theme-dark">brightness_3</mat-icon>
+          </button>
+        </div>
+  
+        <div class="row" *ngIf="loadName()">
+          <button mat-button [matMenuTriggerFor]="menu">
+           {{ "Olá " + loadName() }}
+           <mat-icon>expand_more</mat-icon>
+         </button>
+           <mat-menu #menu="matMenu">
+             <button mat-menu-item (click)="logout()">
+               <mat-icon>logout</mat-icon>
+               <span>Sair</span>
+             </button>
+           </mat-menu>
+       </div>
       </div>
+
     </mat-toolbar>
     <router-outlet></router-outlet>
   </div>

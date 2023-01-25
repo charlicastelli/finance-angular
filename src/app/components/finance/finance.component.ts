@@ -171,8 +171,5 @@ export class FinanceComponent implements OnInit {
       );
   }
 
-  logout() {
-    localStorage.removeItem("token");
-    this.router.navigate(['/'], { relativeTo: this.route });
-  }
+  
 }

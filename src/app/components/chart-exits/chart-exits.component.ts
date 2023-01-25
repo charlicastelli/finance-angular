@@ -62,6 +62,13 @@ export class ChartExitsComponent implements OnInit {
     return totalValue.reduce((prev, elem) => parseFloat(prev + elem.credit), 0);
   }
 
+  getTotalEst() {
+    const totalValue = this.finance.filter(
+      (getTotal, index, array) => getTotal.category === 'Estudos'
+    );
+    return totalValue.reduce((prev, elem) => parseFloat(prev + elem.credit), 0);
+  }
+
   getTotalSaude() {
     const totalValue = this.finance.filter(
       (getTotal, index, array) => getTotal.category === 'Saúde'
@@ -116,16 +123,17 @@ export class ChartExitsComponent implements OnInit {
   pieChart() {
     this.chartOptions = {
       series: [
-        Number(this.getTotalMoradia()),
-        Number(this.getTotalTransporte()),
-        Number(this.getTotalLazer()),
         Number(this.getTotalAlim()),
-        Number(this.getTotalSaude()),
-        Number(this.getTotalVest()),
         Number(this.getTotalAss()),
         Number(this.getTotalCuidados()),
+        Number(this.getTotalEst()),
         Number(this.getTotalFerramentas()),
         Number(this.getTotalLanches()),
+        Number(this.getTotalLazer()),
+        Number(this.getTotalMoradia()),
+        Number(this.getTotalSaude()),
+        Number(this.getTotalTransporte()),
+        Number(this.getTotalVest()),
         Number(this.getTotalOutros()),
       ],
       dataLabels: {
@@ -142,12 +150,13 @@ export class ChartExitsComponent implements OnInit {
         '#00BFFF',
         '#62D2A2',
         '#006400',
-        '#522546',
+        '#91204d',
         '#B8860B',
         '#FF69B4',
         '#DC143C',
         '#FB1B0A',
         '#FFFF00',
+        '#523961',
       ],
       chart: {
         width: 800,
@@ -156,16 +165,17 @@ export class ChartExitsComponent implements OnInit {
       },
 
       labels: [
-        'Moradia',
-        'Transporte',
-        'Lazer',
         'Alimentação',
-        'Saúde',
-        'Vestuário',
         'Assinaturas',
         'Cuidados Pessoais',
+        'Estudos',
         'Ferramentas e Acessórios',
         'Lanches',
+        'Lazer',
+        'Moradia',
+        'Saúde',
+        'Transporte',
+        'Vestuário',
         'Outros',
       ],
       responsive: [

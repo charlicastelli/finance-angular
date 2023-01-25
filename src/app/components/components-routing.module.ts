@@ -1,3 +1,4 @@
+import { PageNotFoundComponent } from './../shared/page-not-found/page-not-found.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -52,6 +53,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
 
   { path: '', component: LoginComponent },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

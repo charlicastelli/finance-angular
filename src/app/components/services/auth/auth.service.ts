@@ -25,10 +25,15 @@ export class AuthService {
   }
 
 
+  //VERIFICA SE O USUARIO ESTA LOGADO
   authenticatedUser() {
-    if(this.login === null) {
+    try {
+      let userData = localStorage.getItem('name');
+      return userData;
+    } catch (error) {
+      console.log(error)
       return false;
     }
-    return true;
   }
-}
+  }
+
