@@ -1,5 +1,5 @@
 <app-message-error></app-message-error>
-<nav class="animate__animated animate__bounce general">
+<nav class="animate__animated animate__zoomIn general">
   <img src="../../../assets/image.png" width="60%" />
   <mat-card>
     <mat-card-content>
@@ -9,6 +9,7 @@
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Nome completo</mat-label>
           <input matInput placeholder="Nome completo" formControlName="name" />
+          <mat-icon class="color-btn" matSuffix>person</mat-icon>
           <mat-error>{{ getErrorMessageName() }}</mat-error>
         </mat-form-field>
 
@@ -20,6 +21,7 @@
             formControlName="username"
             required
           />
+          <mat-icon class="color-btn" matSuffix>email</mat-icon>
            <mat-error>{{ getErrorMessageUserName() }}</mat-error>
         </mat-form-field>
 
