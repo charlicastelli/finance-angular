@@ -16,6 +16,7 @@
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Senha</mat-label>
           <input
+          (keydown)="onKeydown($event)"
             matInput
             [type]="hide ? 'password' : 'text'"
             placeholder="Senha"

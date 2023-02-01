@@ -18,6 +18,7 @@ const moment = _rollupMoment || _moment;
 })
 export class AppAppetizerComponent implements OnInit {
   finance$: Observable<Model[]>;
+  tokenAuthenticatedNow?: string = localStorage.getItem('token')?.toString();
 
   readonly displayedColumns = ['credit', 'description', 'category'];
 
@@ -28,7 +29,11 @@ export class AppAppetizerComponent implements OnInit {
     //Utilizei o pipe e o filter pois queria exibir apenas a categoria entrada
     this.finance$ = this.financeService
       .list()
-      .pipe(map((item) => item.filter((item) => item.category === 'Pagamento' && item._date === moment().format('YYYY-MM'))));
+      .pipe(map((item) => item.filter((item) => 
+      item.category === 'Pagamento' 
+      && item._date === moment().format('YYYY-MM')
+      && item.tokenAuthenticatedUser === this.tokenAuthenticatedNow //exibir apenas o que foi criado pelo usuario
+      )));
   }
 
   ngOnInit(): void {}

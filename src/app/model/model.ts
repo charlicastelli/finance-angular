@@ -6,4 +6,5 @@ export interface Model {
   description: string;
   category: string;
   _date: string;
+  tokenAuthenticatedUser: string;
 }

@@ -57,6 +57,8 @@ export const MY_FORMATS = {
 export class FinanceComponent implements OnInit {
   finance$: Observable<Model[]>;
 
+  tokenAuthenticatedNow?: string = localStorage.getItem('token')?.toString();
+
   //Paga a data atual
   date = new FormControl(moment());
 
@@ -71,7 +73,10 @@ export class FinanceComponent implements OnInit {
 
     //Exibe lista com data igual a atual no formato 2022-12
     this.finance$ = this.financeService.list().pipe(
-     map((item) => item.filter((item) => item._date === moment().format('YYYY-MM'))),
+     map((item) => item.filter((item) => 
+     item._date === moment().format('YYYY-MM')
+     && item.tokenAuthenticatedUser === this.tokenAuthenticatedNow //exibir apenas o que foi criado pelo usuario
+     )),
       catchError((error) => {
         this.onError('Erro ao carregar informações!');
         return of([]);
@@ -94,7 +99,10 @@ export class FinanceComponent implements OnInit {
 
     //Exibe lista com data conforme data escolhida no formato 2022-12
     this.finance$ = this.financeService.list().pipe(
-      map((item) => item.filter((item) => item._date === ctrlValue.format('YYYY-MM'))),
+      map((item) => item.filter((item) => 
+      item._date === ctrlValue.format('YYYY-MM')
+      && item.tokenAuthenticatedUser === this.tokenAuthenticatedNow //exibir apenas o que foi criado pelo usuario
+      )),
       catchError((error) => {
         this.onError('Erro ao carregar informações!');
         return of([]);
@@ -166,7 +174,9 @@ export class FinanceComponent implements OnInit {
       .list()
       .pipe(
         map((item) =>
-          item.filter((item) => item.category.toLowerCase().includes(value))
+          item.filter((item) => item.category.toLowerCase().includes(value)
+          && item.tokenAuthenticatedUser === this.tokenAuthenticatedNow //exibir apenas o que foi criado pelo usuario
+          )
         )
       );
   }

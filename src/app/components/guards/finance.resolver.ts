@@ -10,14 +10,21 @@ import { FinanceService } from './../services/finance.service';
 })
 export class FinanceResolver implements Resolve<Model> {
 
+  //loadToken = localStorage.getItem("token");
+
   constructor(
     private financeService: FinanceService
-  ) {}
+  ) {
+    // this.loadToken;
+    // console.log(this.loadToken)
+  }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Model> {
     if (route.params && route.params['id']) {
       return this.financeService.loadById(route.params['id']);
     }
-    return of({_id: '', credit: '', description: '', category: '', _date: ''});
+    return of({_id: '', credit: '', description: '', category: '', _date: '', tokenAuthenticatedUser: ''});
   }
+
+  
 }

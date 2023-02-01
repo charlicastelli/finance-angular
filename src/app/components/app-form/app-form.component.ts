@@ -14,8 +14,11 @@ import { FinanceService } from './../services/finance.service';
   styleUrls: ['./app-form.component.scss'],
 })
 export class AppFormComponent implements OnInit {
-  formData: Model | null = null;
+  formData!: Model;
   form!: FormGroup;
+  
+
+  tokenAuthenticatedUser?: string = localStorage.getItem('token')?.toString();
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
@@ -26,7 +29,9 @@ export class AppFormComponent implements OnInit {
     private service: FinanceService,
     private snackbar: MatSnackBar,
     private messagesService: MessagesService
-  ) {}
+  ) {
+    
+  }
 
   ngOnInit(): void {
     //Criação de um novo item
@@ -44,6 +49,7 @@ export class AppFormComponent implements OnInit {
           Validators.required,
         ]),
       date: new FormControl(this.formData ? this.formData._date : ''),
+      tokenAuthenticatedUser: new FormControl(this.formData ? this.formData.tokenAuthenticatedUser : '')
     });
 
     //popular formulário para edição
@@ -54,10 +60,17 @@ export class AppFormComponent implements OnInit {
       description: add.description,
       category: add.category,
       date: add._date,
+      tokenAuthenticatedUser: add.tokenAuthenticatedUser,
     });
   }
 
   onSubmit() {
+    //Setar valor do token armazenado no localstorage
+    this.form.patchValue({
+      tokenAuthenticatedUser: this.tokenAuthenticatedUser
+    });
+
+    //salvar no service
     this.service.save(this.form.value).subscribe(
       (result) => this.onSuccess(),
       (error) => this.onError()
@@ -102,4 +115,5 @@ export class AppFormComponent implements OnInit {
       ? 'Escolha uma categoria válida'
       : '';
   }
+
 }

@@ -103,4 +103,13 @@ export class LoginComponent implements OnInit {
   getErrorMessagePassword() {
     return this.form.controls['password'].invalid || this.form.controls['password'].hasError('required') ? 'Campo Obrigatório' : '';
   }
+
+
+  //Evento de clicar tecla enter quando estiver no campo de senhas
+  onKeydown(event: any) {
+    if (event.key === "Enter") {
+      this.login();
+    }
+  }
+
 }

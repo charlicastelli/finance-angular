@@ -9,6 +9,7 @@ import { Model } from 'src/app/model/model';
 })
 export class InfoFinanceComponent implements OnInit {
   @Input() finance: Model[] = [];
+  tokenAuthenticatedNow?: string = localStorage.getItem('token')?.toString();
 
   constructor(private router: Router, private route: ActivatedRoute) {}
 
@@ -16,14 +17,18 @@ export class InfoFinanceComponent implements OnInit {
 
   getTotalAppetizer() {
     const totalValue = this.finance.filter(
-      (getTotal, index, array) => getTotal.category === 'Pagamento'
+      (getTotal, index, array) => 
+      getTotal.category === 'Pagamento' 
+      && getTotal.tokenAuthenticatedUser === this.tokenAuthenticatedNow
     );
     return totalValue.reduce((prev, elem) => parseFloat(prev + elem.credit), 0);
   }
 
   getTotalExits() {
     const totalValue = this.finance.filter(
-      (getTotal, index, array) => getTotal.category != 'Pagamento'
+      (getTotal, index, array) => 
+      getTotal.category != 'Pagamento'
+      && getTotal.tokenAuthenticatedUser === this.tokenAuthenticatedNow
     );
     return totalValue.reduce((prev, elem) => parseFloat(prev + elem.credit), 0);
   }
