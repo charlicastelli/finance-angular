@@ -1,9 +1,9 @@
 <div [ngClass]="{ 'dark-theme': isDarkTheme | async }">
   <div>
     <mat-toolbar>
-      <span>Controle Financeiro</span>
+      <span (click)="goToHome()">Controle Financeiro</span>
 
-      <div >
+      <div>
         <div class="row">
           <button
             mat-icon-button
@@ -13,7 +13,7 @@
           >
             <mat-icon class="btn-theme-light">wb_sunny</mat-icon>
           </button>
-  
+
           <button
             class="btn-theme-dark"
             mat-icon-button
@@ -21,24 +21,23 @@
             *ngIf="!check"
             (click)="toggleDarkTheme((check = true))"
           >
-            <mat-icon class="btn-theme-dark">brightness_3</mat-icon>
+            <mat-icon class="btn-theme-dark">nights_stay_rounded</mat-icon>
           </button>
         </div>
-  
+
         <div class="row" *ngIf="loadName()">
           <button mat-button [matMenuTriggerFor]="menu">
-           {{ "Olá " + loadName() }}
-           <mat-icon>expand_more</mat-icon>
-         </button>
-           <mat-menu #menu="matMenu">
-             <button mat-menu-item (click)="logout()">
-               <mat-icon>logout</mat-icon>
-               <span>Sair</span>
-             </button>
-           </mat-menu>
-       </div>
+            {{ "Olá " + loadName() }}
+            <mat-icon>expand_more</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="logout()">
+              <mat-icon>logout</mat-icon>
+              <span>Sair</span>
+            </button>
+          </mat-menu>
+        </div>
       </div>
-
     </mat-toolbar>
     <router-outlet></router-outlet>
   </div>

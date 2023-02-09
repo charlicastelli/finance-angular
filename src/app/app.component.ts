@@ -53,4 +53,8 @@ export class AppComponent {
     localStorage.removeItem("name");
     this.router.navigate(['/'], { relativeTo: this.route });
   }
+
+  goToHome() {
+    this.router.navigate(['app-login/app-toolbar']);
+  }
 }
