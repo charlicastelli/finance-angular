@@ -1,5 +1,6 @@
 # ControleFinanceiro
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
+- AS IMAGENS QUE USEI SÃO BAIXADAS DO GOOGLE. 
 
 - Controle financeiro pessoal
 - Tema dark persistente (localStorage)
