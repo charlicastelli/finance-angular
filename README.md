@@ -1,10 +1,11 @@
 # ControleFinanceiro
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
 
 - Controle financeiro pessoal
 - Tema dark persistente (localStorage)
 - Sistema de autenticação e cadastro de usuário.
 - Guarda de rotas canActivate e canLoad. 
+- Gerar arquivo PDF com as despesas do mês.
 - Projeto consumindo API Spring - https://github.com/charlicastelli/fina-spring-api/tree/main
 - Para rodar o projeto usar o comando `npm run start`
 - Para instalar o `MOMENT-ADAPTER` usar o comando `npm i @angular/material-moment-adapter --legacy-peer-deps`
@@ -19,6 +20,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Comando para instalar `npm install apexcharts ng-apexcharts --save`.
 - Dentro do arquivo `angular.json` adicionar no script `"scripts": ["node_modules/apexcharts/dist/apexcharts.min.js"]`
 - apexCharts.js https://apexcharts.com/
+
+# Para usar o `html2canvas` e `jspdf`
+- Comando para instalar `npm install jspdf html2canvas`
+
 
 ## Comando para criar um `module` e um `routing.module`
 - `ng generate module components --routing` - (cria uma pasta chamada "components" com o módulo e um routing)

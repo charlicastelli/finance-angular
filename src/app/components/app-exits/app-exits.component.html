@@ -7,6 +7,15 @@
         class="btn-icon"
         mat-icon-button
         aria-label="back"
+        (click)="generatePdf()"
+      >
+        <mat-icon>file_download</mat-icon>
+      </button>
+
+      <button
+        class="btn-icon"
+        mat-icon-button
+        aria-label="back"
         (click)="onCancel()"
       >
         <mat-icon>clear</mat-icon>
@@ -18,7 +27,7 @@
     class="column-flex mat-elevation-z8"
     *ngIf="finance$ | async as finance; else loading"
   >
-    <mat-table [dataSource]="finance">
+    <mat-table [dataSource]="finance" id="table">
       <ng-container matColumnDef="credit">
         <mat-header-cell *matHeaderCellDef> Valor </mat-header-cell>
         <mat-cell *matCellDef="let fina">
@@ -56,7 +65,7 @@
   </ng-template>
 </mat-card>
 <div class="chart">
-  <app-chart-exits
+  <app-chart-exits 
   *ngIf="finance$ | async as finance"
   [finance]="finance"
 ></app-chart-exits>
