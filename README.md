@@ -29,12 +29,22 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - `ng generate module components --routing` - (cria uma pasta chamada "components" com o módulo e um routing)
 
 ## Images
-![a](https://user-images.githubusercontent.com/80997263/214683829-93558fd1-9031-4e20-b87f-18f379eed00c.png)
-![d](https://user-images.githubusercontent.com/80997263/214683850-22b7c1be-b937-4c1b-98c5-0da6313eda1b.png)
-![c](https://user-images.githubusercontent.com/80997263/214683889-6903a1d9-d09b-4869-9b10-87ad882c4c80.png)
-![b](https://user-images.githubusercontent.com/80997263/214683921-5c45b004-30a1-430e-8bbf-9a49f4b36278.png)
-![1](https://user-images.githubusercontent.com/80997263/207950272-d48f7c65-4f40-4504-a6a6-6afac7a330f1.png)
-![6](https://user-images.githubusercontent.com/80997263/208979801-6396e008-721f-402b-9483-b18df659ad10.png)
-![3](https://user-images.githubusercontent.com/80997263/207950297-c9e81a06-dac0-4e5e-82ff-528142ea414e.png)
-![4](https://user-images.githubusercontent.com/80997263/207950311-4fa8d0e8-1311-43d7-8a1b-472eafb34f83.png)
-![5](https://user-images.githubusercontent.com/80997263/207950314-89e46387-74de-4655-8460-b3c583278e93.png)
+![1](https://user-images.githubusercontent.com/80997263/219113667-5db5db0c-6887-4fb8-b1dc-1297e5395deb.png)
+![2](https://user-images.githubusercontent.com/80997263/219113699-65dd5e30-b512-49c1-b106-9d16c67d3d25.png)
+![2 2](https://user-images.githubusercontent.com/80997263/219113862-650910c9-428f-470e-8a9d-885316b78554.png)
+![3](https://user-images.githubusercontent.com/80997263/219113716-8464fa81-2be9-4fac-8b95-5bd118f92b9c.png)
+![4](https://user-images.githubusercontent.com/80997263/219113743-6f1f40c3-ac30-4725-aceb-b3f676cc4f0d.png)
+![5](https://user-images.githubusercontent.com/80997263/219113756-b2cc2d38-38b7-4ac6-ac22-4fe96947852e.png)
+![6](https://user-images.githubusercontent.com/80997263/219113788-38b555a3-2371-4507-bbae-f330747dc097.png)
+![7](https://user-images.githubusercontent.com/80997263/219113803-8be46934-efef-4061-8dd1-0e8b841eb371.png)
+![8](https://user-images.githubusercontent.com/80997263/219113825-1e81092b-eba5-4d6b-80fa-581334262a45.png)
+
+
+
+
+
+
+
+
+
+
