@@ -14,6 +14,16 @@ mat-toolbar {
   animation: go-back 1s infinite alternate;
 }
 
+//animação botoes 
+@keyframes go-back {
+  from {
+    transform: translateX(5px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 .column-flex {
   display: flex;
   flex-direction: column;

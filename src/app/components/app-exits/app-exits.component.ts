@@ -65,7 +65,8 @@ export class AppExitsComponent implements OnInit {
   readonly displayedColumns = ['credit', 'description', 'category'];
 
   //Paga a data atual
-  date = new FormControl(moment());
+  date = new FormControl(moment().locale('pt')); //moment().locale('pt) formato Brasileiro
+  ctrlValue = this.date.value!;
 
   constructor(
     private location: Location,
@@ -92,16 +93,16 @@ export class AppExitsComponent implements OnInit {
     normalizedMonthAndYear: Moment,
     datepicker: MatDatepicker<Moment>
   ) {
-    const ctrlValue = this.date.value!;
-    ctrlValue.month(normalizedMonthAndYear.month());
-    ctrlValue.year(normalizedMonthAndYear.year());
-    this.date.setValue(ctrlValue);
+    
+    this.ctrlValue.month(normalizedMonthAndYear.month());
+    this.ctrlValue.year(normalizedMonthAndYear.year());
+    this.date.setValue(this.ctrlValue);
     datepicker.close();
 
-    //Exibe lista com data conforme data escolhida no formato 2022-12
+    //Exibe lista com data conforme data escolhida no formato 2023-12
     this.finance$ = this.financeService.list().pipe(
       map((item) => item.filter((item) => 
-      item._date === ctrlValue.format('YYYY-MM')
+      item._date === this.ctrlValue.format('YYYY-MM') //Data deve ser nesse formato, pois é o mesmo utilizado no banco de dados
       && item.tokenAuthenticatedUser === this.tokenAuthenticatedNow //exibir apenas o que foi criado pelo usuario
       )),
       catchError((error) => {
@@ -109,9 +110,6 @@ export class AppExitsComponent implements OnInit {
         return of([]);
       })
     );
-    // //if(moment().isAfter(ctrlValue))
-    // if(moment().isBefore(ctrlValue))
-    // alert("Yep!");
   }
 
   onError(errorMsg: string) {
@@ -127,6 +125,7 @@ export class AppExitsComponent implements OnInit {
 
   generatePdf() {
     let data = document.getElementById('table');
+    let selectedDate = this.ctrlValue.format('MMMM/YYYY');
 
     let dateNow = Date.now(); //Data atual
     let formattedDate = formatDate(dateNow, 'dd-MM-yyyy HH:mm:ss', 'en-US'); //Formatar data
@@ -139,7 +138,7 @@ export class AppExitsComponent implements OnInit {
       let position = 20;
 
       docPdf.text(
-        this.loadName() + ', aqui estão suas despesas do mês',
+        this.loadName() + ', aqui estão suas despesas de ' + selectedDate,
         105,
         10,
         { align: 'center' }
