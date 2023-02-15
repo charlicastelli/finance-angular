@@ -71,7 +71,7 @@ export class FinanceComponent implements OnInit {
     private messagesService: MessagesService
   ) {
 
-    //Exibe lista com data igual a atual no formato 2022-12
+    //Exibe lista com data igual a atual no formato 2023-12
     this.finance$ = this.financeService.list().pipe(
      map((item) => item.filter((item) => 
      item._date === moment().format('YYYY-MM')

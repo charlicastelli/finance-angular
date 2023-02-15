@@ -2,6 +2,25 @@
   <mat-toolbar>
     <span>Despesas do Mês</span>
 
+    <div class="div-date">
+      <mat-form-field>
+        <input
+          matInput
+          [matDatepicker]="dp"
+          [formControl]="date"
+          readonly="true"
+        />
+        <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+        <mat-datepicker
+          #dp
+          startView="year"
+          (monthSelected)="setMonthAndYear($event, dp)"
+          panelClass="example-month-picker"
+        >
+        </mat-datepicker>
+      </mat-form-field>
+    </div>
+
     <div class="example-flex-container">
       <button
         class="btn-icon"
@@ -65,8 +84,8 @@
   </ng-template>
 </mat-card>
 <div class="chart">
-  <app-chart-exits 
-  *ngIf="finance$ | async as finance"
-  [finance]="finance"
-></app-chart-exits>
+  <app-chart-exits
+    *ngIf="finance$ | async as finance"
+    [finance]="finance"
+  ></app-chart-exits>
 </div>

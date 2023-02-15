@@ -1,21 +1,62 @@
 import { formatDate, Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 import { Model } from 'src/app/model/model';
 
 import { FinanceService } from '../services/finance.service';
-import * as _moment from 'moment';
 
-import { default as _rollupMoment } from 'moment';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
+
+
+import {
+  MomentDateAdapter,
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+} from '@angular/material-moment-adapter';
+import {
+  DateAdapter,
+  MAT_DATE_FORMATS,
+  MAT_DATE_LOCALE,
+} from '@angular/material/core';
+import { MatDatepicker } from '@angular/material/datepicker';
+
+import * as _moment from 'moment';
+
+import { default as _rollupMoment, Moment } from 'moment';
+import { FormControl } from '@angular/forms';
+import { ErrorDialogComponent } from 'src/app/shared/dialog/error-dialog/error-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+
 const moment = _rollupMoment || _moment;
+
+//formata a data de exibição
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'MM/YYYY',
+  },
+  display: {
+    dateInput: 'MMMM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 @Component({
   selector: 'app-app-exits',
   templateUrl: './app-exits.component.html',
   styleUrls: ['./app-exits.component.scss'],
+  providers: [
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+    },
+
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+  ],
 })
 export class AppExitsComponent implements OnInit {
   finance$: Observable<Model[]>;
@@ -23,11 +64,15 @@ export class AppExitsComponent implements OnInit {
 
   readonly displayedColumns = ['credit', 'description', 'category'];
 
+  //Paga a data atual
+  date = new FormControl(moment());
+
   constructor(
     private location: Location,
-    private financeService: FinanceService
+    private financeService: FinanceService,
+    public dialog: MatDialog,
   ) {
-    //Utilizei o pipe e o filter pois queria exibir apenas a categoria entrada
+    //Utilizei o pipe e o filter pois queria exibir apenas a categoria saída
     this.finance$ = this.financeService.list().pipe(
       map((item) =>
         item.filter(
@@ -42,6 +87,40 @@ export class AppExitsComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  //setar a data escolhida exibe na tela
+  setMonthAndYear(
+    normalizedMonthAndYear: Moment,
+    datepicker: MatDatepicker<Moment>
+  ) {
+    const ctrlValue = this.date.value!;
+    ctrlValue.month(normalizedMonthAndYear.month());
+    ctrlValue.year(normalizedMonthAndYear.year());
+    this.date.setValue(ctrlValue);
+    datepicker.close();
+
+    //Exibe lista com data conforme data escolhida no formato 2022-12
+    this.finance$ = this.financeService.list().pipe(
+      map((item) => item.filter((item) => 
+      item._date === ctrlValue.format('YYYY-MM')
+      && item.tokenAuthenticatedUser === this.tokenAuthenticatedNow //exibir apenas o que foi criado pelo usuario
+      )),
+      catchError((error) => {
+        this.onError('Erro ao carregar informações!');
+        return of([]);
+      })
+    );
+    // //if(moment().isAfter(ctrlValue))
+    // if(moment().isBefore(ctrlValue))
+    // alert("Yep!");
+  }
+
+  onError(errorMsg: string) {
+    this.dialog.open(ErrorDialogComponent, {
+      data: errorMsg,
+    });
+  }
+
+  
   onCancel() {
     this.location.back();
   }
